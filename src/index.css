@@ -8,7 +8,48 @@
   body{
     font-family: 'Poppins',sans-serif !important;
     font-weight: 400;
+    background-color: #2b2d41 !important;
   }
+
+  
+
+.bg-space-cadet{
+background-color:#2b2d41;
+}
+.space-cadet{
+  color:#2b2d41;
+}
+.bg-charcoal{
+background-color:#404559;
+}
+
+.charcoal{
+  color:#404559;
+}
+.bg-payne-gray{
+background-color:#535b6f;
+}
+
+.payne-gray{
+  color:#535b6f;
+}
+.bg-fire-engine-red{
+background-color:#d4062a !important;
+}
+.fire-engine-red{
+  color:#d4062a !important;
+}
+.light-charcoal{
+  color: #b6c1df;
+}
+
+.bg-lettebox{
+  background-color:#14181c;
+}
+
+.bg-light-charcoal{
+  background-color: #b6c1df !important;
+}
 
 
 .logo{
@@ -24,32 +65,64 @@
 .vertical-text {
   display: inline-block;
   transform: rotate(-90deg);
-  transform-origin: right bottom;
+  transform-origin: bottom top ;
   white-space: nowrap;
-  bottom:0;
+  /* top:calc(100% - 3px); */
   right:0;
+  bottom:12px;
+  /* margin-right: 3px; */
+  /* padding: 3px; */
+  
+
 }
 
- #header{
-  /* background-image: url("./whitebackground.png"); */
-  /* position: relative; */
-  height:500px;
-  /* background: linear-gradient(103deg, rgba(2,0,36,1) 0%, rgba(20,20,22,0.6643032212885154) 21%, rgba(17,20,20,0.6474964985994398) 75%, rgba(17,20,20,1) 100%); */
-  /* background-blend-mode: multiply; */
-  /* background-size: cover;  */
-  /* background-repeat: no-repeat; */
 
+
+ #header{
+  height:100vh;
 } 
 
 .gradient-image-overlay {
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url("./whitebackground.png");
-  background: linear-gradient(103deg, rgba(2,0,36,1) 0%, rgba(20,20,22,0.6643032212885154) 21%, rgba(17,20,20,0.6474964985994398) 75%, rgba(17,20,20,1) 100%);
-  background-blend-mode: multiply;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+h1-mod{
+  font-size: 5em;
+}
+
+
+.placeholder-signup{
+  background-color: #b6c1df !important;
+  
+}
+
+
+.carousel-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.carousel-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    103deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(20, 20, 22, 0.6643032212885154) 21%,
+    rgba(17, 20, 20, 0.6474964985994398) 75%,
+    rgba(17, 20, 20, 1) 100%
+  );
+  z-index: 1;
 }
 
 
@@ -58,6 +131,10 @@
   .gradient-image-overlay{
     /* background: rgb(255,253,249); */
 background: linear-gradient(-180deg, rgba(255,253,249,0.5690651260504201) 0%, rgba(56,61,59,0.9108018207282913) 71%);
+  }
+
+  body{
+    font-size: 70% !important;
   }
 
 }

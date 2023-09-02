@@ -5,16 +5,13 @@ import whitelogo from '../whitebackground.png';
 
 import Moviebox from '../components/Moviebox';
 import Footer from './Footer';
+import Rate from '../components/Rate';
+import HomeCarouselSection from '../components/HomeCarouselSection';
 
 const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=2eae85518d6a6151564e13b9cd5af3df"
+const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
 function Home() {
-    const backgroundImageUrl = 'url('+whitelogo+')' ;
-
-    const inlineStyles = {
-        backgroundImage: backgroundImageUrl,
-        // background: 'linear-gradient(103deg, rgba(2,0,36,1) 0%, rgba(20,20,22,0.6643032212885154) 21%, rgba(17,20,20,0.6474964985994398) 75%, rgba(17,20,20,1) 100%)',
-        // backgroundBlendMode:'multiply
-      };
+   
    
 
 const [movies,setMovies]  = useState([]);
@@ -27,17 +24,47 @@ const [movies,setMovies]  = useState([]);
       })
     },[])
 
+  const [rating,setRating] = useState(0);
+
+
+  const backgroundImageUrl = 'url('+whitelogo+')' ;
+  
+  const intUrl = 'url(https://image.tmdb.org/t/p/w1280//35z8hWuzfFUZQaYog8E9LsXW3iI.jpg)';
+
+  const inlineStyles = {
+      backgroundImage: 'linear-gradient(103deg, rgba(2,0,36,1) 0%, rgba(20,20,22,0.6643032212885154) 21%, rgba(17,20,20,0.6474964985994398) 75%, rgba(17,20,20,1) 100%),'+intUrl
+    
+    };
+
+
+   
+        // const backdropImageUrl = 'https://image.tmdb.org/t/p/w1280'+movie.backdrop_path;
+  
+    
+        
+             
+         
+         
+    
+
   return (
-    <div className='home'>
-        <section id="header" className='gradient-image-overlay position-relative '>
-             <Header/>
-             <h6 className='vertical-text position-absolute  '>ryan hagel</h6>
+    <div classNameName='home'>
+    
+        <section id="header" style={inlineStyles} className='gradient-image-overlay d-flex flex-column  position-relative '>
+        <Header/>
+           {/* <Link><h6 className='vertical-text position-absolute'>ryan hagel</h6></Link> */}
         {/* <img src={whitelogo} style={{ width: "100%"}} alt="background white"/> */}
-        <div className=' gap-4 w-50-md container mt-4 text-center'>
-    <h1 className=" justify-content-center  align-items-center fs-1-lg fs-4 text-light">Track films you’ve watched.Save those you want to see. Tell your friends what’s good.  </h1>
-    <Link to="/signup" className="d-block w-50 align-self-center container  btn btn-primary">Get started - it's free</Link>
+        <div className=' gap-4 w-50-md container d-flex justify-content-center  align-items-center flex-column mt-5 text-center'>
+    <h1 className=" justify-content-center  align-items-center fs-1-lg h1-mod text-light">Track films you’ve watched.Save those you want to see. Tell your friends what’s good.  </h1>
+    <Link to="/signup" className="d-block w-50 align-self-center container text-light  btn bg-fire-engine-red">Get started - it's free</Link>
     </div>
+        
         </section>
+     
+
+       
+
+
 
         <section id="movies" className='row text-center container-fluid  mt-5 d-flex justify-content-center align-items-center '>
       
@@ -48,6 +75,11 @@ const [movies,setMovies]  = useState([]);
         </section>
    
   
+        
+        {/* <Rate rating={rating} onRating={(rate) => setRating(rate)}/> */}
+        {movies.map((movieReq)=><HomeCarouselSection key={movieReq.id} {...movieReq} />)}
+         
+
         <Footer/>
     </div>
   )

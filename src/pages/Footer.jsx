@@ -1,13 +1,42 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import '../styles/footerStyles.css'
+import {FaFacebook} from 'react-icons/fa'; 
+import {FaTwitter} from 'react-icons/fa';
+import {FaPinterest} from 'react-icons/fa';
+import {FaInstagram} from 'react-icons/fa';
+import {FaTiktok} from 'react-icons/fa';
+import {FaQuora} from 'react-icons/fa';
+import {FaHeart} from 'react-icons/fa';
+
 
 function Footer() {
   return (
     <div>
-        <footer class="footer bg-dark text-light ">
-    <div class="container ">
-      <p>&copy; 2023 Your Company. All rights reserved.</p>
-      
+        <footer class="footer d-flex justify-content-center align-items-center bg-payne-gray text-light m-0  ">
+    <div class="container d-flex flex-column gap-3 ">
+      <ul className="d-flex justify-content-center list-unstyled  gap-2">
+        
+        <li className="light-charcoal text-uppercase "><Link to="" className='light-charcoal'>about</Link></li>
+        <li className="light-charcoal text-uppercase "><Link to="" className='light-charcoal'>news</Link></li>
+        <li className="light-charcoal text-uppercase "><Link to="" className='light-charcoal'>pro</Link></li>
+        <li className="light-charcoal text-uppercase "><Link to="" className='light-charcoal'>podcast</Link></li>
+        <li className="light-charcoal text-uppercase "><Link to="" className='light-charcoal'>year in review</Link></li>
+        <li className="light-charcoal text-uppercase "><Link to="" className='light-charcoal'>help</Link></li>
+        <li className="light-charcoal text-uppercase "><Link to="" className='light-charcoal'>terms</Link></li>
+        <li className="light-charcoal text-uppercase "><Link to="" className='light-charcoal'>contact</Link></li>
+
+
+      </ul>
+      <h6 className='light-charcoal fs-6 text-capitalize text-center '>&copy; cinemascope. made with <FaHeart/> and courage by <a className="light-charcoal" target="_blank" href="www.twitter.com/damndaniel241">daniel ebere</a> in ogun, nigeria. <Link className='light-charcoal '>film data </Link>from <a className="light-charcoal" href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">TMDB</a>.</h6>
+      <ul className="d-flex justify-content-center light-charcoal list-unstyled  gap-3">
+        <li className="h4"><a href="www..com/" className="light-charcoal"><FaFacebook/></a></li>
+        <li className="h4"><a href="www..com/" className="light-charcoal"><FaTwitter/></a></li>
+        <li className="h4"><a href="www..com/" className="light-charcoal"><FaPinterest/></a></li>
+        <li className="h4"><a href="www..com/" className="light-charcoal"><FaInstagram/></a></li>
+        <li className="h4"><a href="www..com/" className="light-charcoal"><FaTiktok/></a></li>
+        <li className="h4"><a href="www..com/" className="light-charcoal"><FaQuora/></a></li>
+        </ul>
     </div>
   </footer>
     </div>
