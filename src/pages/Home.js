@@ -7,6 +7,11 @@ import Moviebox from '../components/Moviebox';
 import Footer from './Footer';
 import Rate from '../components/Rate';
 import HomeCarouselSection from '../components/HomeCarouselSection';
+import "animate.css";
+import {FaAndroid,FaApple} from 'react-icons/fa';
+
+
+
 
 const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=2eae85518d6a6151564e13b9cd5af3df"
 const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
@@ -55,8 +60,10 @@ const [movies,setMovies]  = useState([]);
            {/* <Link><h6 className='vertical-text position-absolute'>ryan hagel</h6></Link> */}
         {/* <img src={whitelogo} style={{ width: "100%"}} alt="background white"/> */}
         <div className=' gap-4 w-50-md container d-flex justify-content-center  align-items-center flex-column mt-5 text-center'>
-    <h1 className=" justify-content-center  align-items-center fs-1-lg h1-mod text-light">Track films you’ve watched.Save those you want to see. Tell your friends what’s good.  </h1>
+    <h1 className=" justify-content-center  align-items-center fs-1-lg h1-mod text-light  animate__animated animate__bounce animate__delay-2s animate__repeat-2">Track films you’ve watched.Save those you want to see. Tell your friends what’s good.  </h1>
     <Link to="/signup" className="d-block w-50 align-self-center container text-light  btn bg-fire-engine-red">Get started - it's free</Link>
+    <p className='text-light'>The social network for film lovers. Also available on <a href="" className=""><FaApple/></a><a href="" className=""> <FaAndroid/> </a>
+</p>
     </div>
         
         </section>
@@ -67,7 +74,7 @@ const [movies,setMovies]  = useState([]);
 
 
         <section id="movies" className='row text-center container-fluid  mt-5 d-flex justify-content-center align-items-center '>
-      
+      <p className='text-start text-light h4 '>What's Popular?</p>
         
       {movies.map((movieReq)=><Moviebox key={movieReq.id} {...movieReq} />)}
     
@@ -77,7 +84,7 @@ const [movies,setMovies]  = useState([]);
   
         
         {/* <Rate rating={rating} onRating={(rate) => setRating(rate)}/> */}
-        {movies.map((movieReq)=><HomeCarouselSection key={movieReq.id} {...movieReq} />)}
+        {/* {movies.map((movieReq)=><HomeCarouselSection key={movieReq.id} id={movieReq.id} {...movieReq} />)} */}
          
 
         <Footer/>

@@ -1,0 +1,17 @@
+
+
+.imp-content{
+    font-size: 0.735em;
+    padding: 4px;
+    
+}
+
+.imp-content:hover{
+    border-width: 2px;
+    border-color: #b6c1df !important;
+}
+
+
+.imp-border-2{
+    border: 2px solid #535b6f ;
+}

@@ -1,11 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link,useLocation } from 'react-router-dom';
 import brandlogo from '../cinemascopelogo.png';
+import brandlogo2 from '../movie.png'
 import '../styles/navbarStyles.css';
 import classNames from 'classnames';
 function Header() {
     const location = useLocation();
     const isHomePage = location.pathname === '/';
+    const [searchQuery,updatesearchQuery] = useState();
 
     const navbarClasses = classNames(
         'navbar',
@@ -46,7 +48,7 @@ function Header() {
                     </li>
                 </ul>
                 <form className="d-flex my-2 my-lg-0">
-                    <input className="form-control me-sm-2" type="text" placeholder="Search"/>
+                    <input className="form-control me-sm-2" type="text"  placeholder="Search"/>
                     <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>

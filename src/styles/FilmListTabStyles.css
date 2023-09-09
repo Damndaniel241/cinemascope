@@ -1,0 +1,51 @@
+ 
+
+ button{
+    border: none;
+    padding: 1rem 2rem;
+    background-color:#2b2d41;
+
+ }
+
+
+ .active{
+    position: relative;
+    color:#b6c1df ;
+    font-weight: 600;
+ }
+
+ .active::after{
+    content: "";
+    position: absolute;
+
+    width:100%;
+    background-color: #b6c1df ;
+    left:0;
+    height:  0.2rem;
+    bottom: 0;
+ }
+
+ .deactivate{
+    color:#d4062a ;
+ }
+
+ .deactivate:hover{
+    background-color: #b6c1df ;
+    color:#000;
+    border-top-left-radius:5px ;
+
+    border-top-right-radius:5px ;
+   
+
+ }
+
+ .tab_content{
+    /* height:50vh; */
+    background-color: #2b2d41;
+    /* display: flex; */
+    /* place-items: center; */
+    color:#fff;
+    width:100%;
+
+    
+ }

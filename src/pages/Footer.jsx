@@ -1,13 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import '../styles/footerStyles.css'
-import {FaFacebook} from 'react-icons/fa'; 
-import {FaTwitter} from 'react-icons/fa';
-import {FaPinterest} from 'react-icons/fa';
-import {FaInstagram} from 'react-icons/fa';
-import {FaTiktok} from 'react-icons/fa';
-import {FaQuora} from 'react-icons/fa';
-import {FaHeart} from 'react-icons/fa';
+import {FaFacebook,FaTwitter,FaPinterest,FaInstagram,FaTiktok,FaQuora,FaHeart} from 'react-icons/fa'; 
+
+
 
 
 function Footer() {
@@ -28,7 +24,7 @@ function Footer() {
 
 
       </ul>
-      <h6 className='light-charcoal fs-6 text-capitalize text-center '>&copy; cinemascope. made with <FaHeart/> and courage by <a className="light-charcoal" target="_blank" href="www.twitter.com/damndaniel241">daniel ebere</a> in ogun, nigeria. <Link className='light-charcoal '>film data </Link>from <a className="light-charcoal" href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">TMDB</a>.</h6>
+      <h6 className='light-charcoal fs-lg-6 text-capitalize text-center '>&copy; cinemascope. made with <FaHeart/> and courage by <a className="light-charcoal" target="_blank" href="www.twitter.com/damndaniel241">daniel ebere</a> in ogun, nigeria. <Link className='light-charcoal '>film data </Link>from <a className="light-charcoal" href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">TMDB</a>.</h6>
       <ul className="d-flex justify-content-center light-charcoal list-unstyled  gap-3">
         <li className="h4"><a href="www..com/" className="light-charcoal"><FaFacebook/></a></li>
         <li className="h4"><a href="www..com/" className="light-charcoal"><FaTwitter/></a></li>
