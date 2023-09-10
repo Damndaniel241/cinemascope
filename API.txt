@@ -1,0 +1,74 @@
+API_KEY = "2eae85518d6a6151564e13b9cd5af3df"
+
+API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=2eae85518d6a6151564e13b9cd5af3df"
+
+API_IMAGE = "https://image.tmdb.org/t/p/w500" 
+
+API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=2eae85518d6a6151564e13b9cd5af3df&query"
+
+
+
+
+adult
+: 
+false
+backdrop_path
+: 
+"/nHf61UzkfFno5X1ofIhugCPus2R.jpg"
+genre_ids
+: 
+(3) [35, 12, 14]
+id
+: 
+346698
+original_language
+: 
+"en"
+original_title
+: 
+"Barbie"
+overview
+: 
+"Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the joys and perils of living among humans."
+popularity
+: 
+1255.043
+poster_path
+: 
+"/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg"
+release_date
+: 
+"2023-07-19"
+title
+: 
+"Barbie"
+video
+: 
+false
+vote_average
+: 
+7.4
+vote_count
+: 
+3572
+
+
+
+
+
+in my react app i would love to put a movie page for all movies. basically when you click on the movie box , it takes you here http://localhost:3000/film/scrapper-2023/. e.g for the movie scrapper. how do i organize my react app to to do this. in terms of creating components and stuff  
+
+
+const videos = {
+  results: [
+    // ... (your video objects here)
+  ]
+};
+
+const firstTrailer = videos.results.find(video => video.type === "Trailer");
+
+if (firstTrailer) {
+  console.log(firstTrailer);
+} else {
+  console.log("No trailer found with type 'Trailer'");
+}
