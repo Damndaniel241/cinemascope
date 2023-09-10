@@ -1,20 +1,27 @@
 import React,{useState} from 'react'
 import { Link,useLocation } from 'react-router-dom';
-import brandlogo from '../cinemascopelogo.png';
+import brandlogo from '../cinemascopelogo2.png';
 import brandlogo2 from '../movie.png'
 import '../styles/navbarStyles.css';
 import classNames from 'classnames';
 function Header() {
     const location = useLocation();
-    const isHomePage = location.pathname === '/';
+    const isHomePage = location.pathname === '/' || location.pathname.startsWith('/film/');
     const [searchQuery,updatesearchQuery] = useState();
+
+
 
     const navbarClasses = classNames(
         'navbar',
         'navbar-expand-sm',
+        'navbar-expand-lg',
+        'img-fluid',
         {'transparent-bg':isHomePage},
         {'colored-bg':!isHomePage}
     );
+
+
+    console.log(isHomePage);
 
   return (
     <>

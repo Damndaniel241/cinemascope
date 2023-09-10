@@ -128,6 +128,7 @@ background-color:#d4062a !important;
     height: 100vh !important;
 }  
 
+
  #header{
   height:100vh;
 } 
@@ -192,6 +193,11 @@ background: linear-gradient(-180deg, rgba(255,253,249,0.5690651260504201) 0%, rg
   .resizze{
     width: clamp(200px, 100%, 800px);
   }
+
+
+.height-50vh{
+  height: 50vh !important;
+}  
 
 }
   

@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Films from '../src/subpages/Films';
 import Moviepage from './subpages/Moviepage';
-export {Link};
+import Subpages from './subpages/Subpages';
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/films" element={<Films/>}/>
       <Route path="/film/:id/:movieTitle" element={<Moviepage/>}/>
+      <Route path="/*" element={<Subpages />}/>
 
     </Routes>
     

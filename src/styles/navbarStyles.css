@@ -15,7 +15,8 @@
   } */
   
   .colored-bg {
-    background-color: #212529 !important;
+    /* background-color: #212529 !important; */
+    background-color: #2b2d41 !important;
   }
 
   .nav-link:hover{

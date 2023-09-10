@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
+
 const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
 
 function Moviebox({title,poster_path,vote_average,release_date,overview,backdrop_path,id}) {
@@ -24,7 +25,7 @@ const newTitle = year ? `${slug}-${year}` : slug;
 
   return (
 
-    <div className='col-lg-3 col-12'>
+    <div className='col-lg-3 col-md-6 col-12'>
      
         <div className="card mb-4">
         <Link to={{pathname:`/film/${id}/${newTitle}`,

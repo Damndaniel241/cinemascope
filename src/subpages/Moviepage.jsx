@@ -12,20 +12,54 @@ import ButtonLink from '../components/ButtonLink';
 import FlexTabComponent from '../components/tabcontentcomponents/FlexTabComponent';
 import FlexColumnComponent from '../components/tabcontentcomponents/FlexColumnComponent';
 import ImportantButtonLink from '../components/ImportantButtonLink';
+import SimilarMoviebox from '../components/SimilarMoviebox';
+import Moviebox from '../components/Moviebox';
+import "../styles/navbarStyles.css"
 
 
 
 
 const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
-const API_IMAGE_BIG = "https://image.tmdb.org/t/p/w1280/" ;
+// let API_IMAGE_BIG = "https://image.tmdb.org/t/p/w1280/" ;
 const API_KEY = '2eae85518d6a6151564e13b9cd5af3df';
-const YOUTUBE_LINK = 'https://www.youtube.com/watch?v='
+const YOUTUBE_LINK = 'https://www.youtube.com/watch?v=';
+
+
 
 
 
 function Moviepage() {
 
   const {movieTitle,id} = useParams();
+  const [API_IMAGE_BIG, setAPIImageBig] = useState("https://image.tmdb.org/t/p/w1280/");
+
+ const location = useLocation();
+ console.log(location.pathname.startsWith('/film/'));
+  
+
+  useEffect(() => {
+    // Function to update API_IMAGE_BIG based on innerWidth
+    const updateImageSize = () => {
+      if (window.innerWidth < 768) {
+        setAPIImageBig("https://image.tmdb.org/t/p/w500/");
+
+        if(window.innerWidth>517){
+          setAPIImageBig("https://image.tmdb.org/t/p/w780/");
+        }
+      } else {
+        setAPIImageBig("https://image.tmdb.org/t/p/w1280/");
+      }
+    };
+    updateImageSize();
+    window.addEventListener('resize', updateImageSize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', updateImageSize);
+    };
+
+    // Include any other dependencies from your existing useEffect here
+  }, []); 
 
 
   const [movieData, setMovieData] = useState(null);
@@ -33,7 +67,9 @@ function Moviepage() {
   const [movieDirector, setMovieDirector] = useState(null);
   const [movieCast, setMovieCast] = useState([])
   const [movieCrew, setMovieCrew] = useState([])
-  console.log(movieTitle)
+  const [AlternateTitles, setAlternateTitles] = useState([]);
+  const [similarResults, setSimilarResults] = useState([]);
+  // console.log(movieTitle)
 
   const parts = movieTitle.split('-'); // Split the title at the hyphen
 const baseTitle = parts.slice(0, -1).join('-');
@@ -44,7 +80,7 @@ useEffect(() => {
   const fetchMovieDetails = async () => {
     try {
     
-          const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=credits,videos`)
+          const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=credits,videos,alternative_titles,similar`)
       
     console.log(response.data);
     console.log(response.data.credits.crew);
@@ -59,18 +95,38 @@ useEffect(() => {
   ? [mainTrailer]
   : response.data.videos.results.filter(video => video.type === "Trailer");
 
-  console.log(filteredVideos[0].key)
+  // console.log(filteredVideos[0].key)
   // console.log(filteredVideos);
+  if (filteredVideos.length > 0) {
+
     const trailerLink = `${YOUTUBE_LINK}${filteredVideos[0].key}`
       setMovieTrailer(trailerLink) 
+  }else {
+    // Handle the case where there are no videos
+    setMovieTrailer(""); // Or set it to some default value or handle it in your app logic
+  }
       setMovieData(response.data);
       setMovieCast(response.data.credits.cast);
       setMovieCrew(response.data.credits.crew);
       // setText(response.data.overview);
 
 
+      const extractedTitles = response.data.alternative_titles.titles.map(
+        (titleData) => titleData.title
+      );
+      setAlternateTitles(extractedTitles);
+    
+      const firstFourResults = response.data.similar.results;
+      setSimilarResults(firstFourResults);
+      // setSimilarResults(response.data.similar.results.slice(0, 4));
 
-console.log(movieCast);
+      console.log(firstFourResults);
+    
+
+
+      // .slice(0, 4);
+
+// console.log(movieCast);
       
     
     } catch (error) {
@@ -80,7 +136,11 @@ console.log(movieCast);
 
 
   fetchMovieDetails();
-}, [baseTitle]);
+}, [id]);
+
+
+
+// console.log(AlternateTitles);
 
 if (movieData === null) {
   return 
@@ -92,7 +152,9 @@ if (movieData === null) {
 
 
 
-const { backdrop_path, title, overview, poster_path, release_date,runtime,tagline,homepage } = movieData;
+const { backdrop_path, title, overview, poster_path, release_date,
+  imdb_id,runtime,tagline,homepage,production_companies,genres,budget,
+production_countries,spoken_languages } = movieData;
 
 
 const groupedCast = {};
@@ -105,6 +167,9 @@ movieCrew.forEach((person) => {
 });
 
 
+
+console.log(similarResults.slice(0, 4));
+// console.log(tagline)
 
 // const screeenWidth = useScreenWidth();
 // const backgroundImageUrl = screeenWidth <= 768 ? API_IMAGE+backdrop_path : API_IMAGE_BIG+backdrop_path};
@@ -127,18 +192,18 @@ const backdrop_inlineStyle = {
     <div>
       <Header/>
      
-       <section style={backdrop_inlineStyle} className=' height-100vh gradient-image-overlay d-flex flex-column position-relative '>
+       <section style={backdrop_inlineStyle} className=' height-100vh height-50vh gradient-image-overlay d-flex flex-column position-relative '>
       
        </section>
-      <section id="first-details" className="d-flex justify-content-between align-item-center mx-4 my-4">
+      <section id="first-details" className="d-flex justify-content-between align-item-center mx-md-4 mx-2  my-4">
     
       <div className="light-charcoal align-self-center ">
         <h3 className="text-light h1 text-capitalize font-cormorant"><a href={homepage} target='_blank' className='no-link-decoration text-light'>{title}</a></h3>
         <div className="d-flex text-uppercase  "> <Link className="no-link-decoration light-charcoal ">{release_date.slice(0,4)} </Link>&nbsp;<GoDotFill/>&nbsp;Directed by
         </div>
         <h5 className="text-capitalize font-vesper mt-2"><Link className="no-link-decoration light-charcoal ">{movieDirector} </Link></h5>
-        <div className="d-flex gap-3 "><a name="" id="" className="btn   bg-payne-gray h6 no-link-decoration light-charcoal  text-uppercase " target='_blank' href={movieTrailer} role="button"><FaPlay/> trailer</a>
-        <span className="align-self-center">{runtime} mins</span>
+        <div className="d-flex gap-3 ">{movieTrailer && (<a name="" id="" className="btn fs-p-10px  bg-payne-gray h6 no-link-decoration light-charcoal  text-uppercase " target='_blank' href={movieTrailer} role="button"><FaPlay/> trailer</a>)}
+        <span className="align-items-center-lg">{runtime} mins</span>
         </div>
         </div>
             {/* <p className="text-light">Overview: {overview}</p>
@@ -149,7 +214,7 @@ const backdrop_inlineStyle = {
        <p className="text-light">the runtime is {runtime}</p>
        <p className="text-light">{tagline}</p> */}
       {/* <div className=" rounded-3"> */}
-      <img className="w-25" src={API_IMAGE + poster_path} alt={title} />
+      <img className="w-25 " src={API_IMAGE + poster_path} alt={title} />
        
       {/* </div> */}
 
@@ -158,14 +223,14 @@ const backdrop_inlineStyle = {
       </section>
 
      
-     <section className='mb-4 light-charcoal  mx-4'>
+     <section className='mb-4 light-charcoal  mx-md-4 mx-2'>
       <p className='text-uppercase'>{tagline}</p>
      <Expandable>{overview}</Expandable>
 
    
      </section>
 
-     <section className='mb-4 ms-4 light-charcoal'>
+     <section className='mb-4 ms-md-4 ms-2 light-charcoal'>
      
     <FilmListTabs>
        <FilmListTab label = {"tab0"} tabName={"CAST"}>
@@ -198,23 +263,79 @@ const backdrop_inlineStyle = {
       
       
        </FilmListTab>
+
+
        <FilmListTab label = {"tab2"} tabName={"DETAILS"}>
-        <p>Tab 3 content</p>
+      <FlexColumnComponent>
+      <div>
+        <h6 className="light-charcoal text-uppercase">studios</h6>
+        <div>
+        <FlexTabComponent>
+          {production_companies.map((item)=><ButtonLink>{item.name}</ButtonLink>)}
+        </FlexTabComponent>
+        </div>
+        </div>
+      </FlexColumnComponent>
+
+      <FlexColumnComponent>
+        <div>
+        <h6 className="light-charcoal text-uppercase">countries</h6>
+        <div>
+        <FlexTabComponent>
+          {production_countries.map((item)=><ButtonLink>{item.name}</ButtonLink>)}
+        </FlexTabComponent>
+        </div>
+        </div>
+      </FlexColumnComponent>
+
+      {AlternateTitles.length > 0 && (
+        <FlexColumnComponent>
+        
+          
+            <h6 className='text-uppercase light-charcoal '>Alternative titles</h6>
+            <div className="light-charcoal d-flex flex-wrap">
+            {AlternateTitles.map((title,index)=>(<span key={index}>{title}&nbsp;|&nbsp;</span>))}
+         
+            </div>  
+          
+        </FlexColumnComponent>
+         )}
        </FilmListTab>
+
+
        <FilmListTab label = {"tab3"} tabName={"GENRES"}>
-        <p>Tab 3 content</p>
+        
+      <FlexColumnComponent>
+        <div>
+        <h6 className="light-charcoal text-uppercase">genres</h6>
+        <div>
+        <FlexTabComponent>
+          {genres.map((item)=><ButtonLink>{item.name}</ButtonLink>)}
+        </FlexTabComponent>
+        </div>
+        </div>
+      </FlexColumnComponent>
+
        </FilmListTab>
     </FilmListTabs>
   
      </section>
 
-<section className='mb-4 light-charcoal  mx-4'>
+<section className='mb-4 light-charcoal  mx-md-4 mx-2'>
   More at &nbsp;
   <ImportantButtonLink to="www.nairaland.com">imdb</ImportantButtonLink> &nbsp;
   <ImportantButtonLink to="www.nairaland.com">tmdb</ImportantButtonLink>
 </section>
     
-      
+<section id="movies" className='row text-center container-fluid mx-auto d-flex justify-content-center align-items-center '>
+
+<div className='d-flex  justify-content-between '>
+    <Link to="" className='no-link-decoration light-charcoal text-uppercase '>Similar</Link>
+    <Link to="" className='no-link-decoration light-charcoal text-uppercase '>All</Link>
+    </div>
+    <hr className=' light-charcoal'/>
+    { similarResults.slice(0, 4).map((movie)=> <Moviebox key={movie.id}{...movie}/>)}
+    </section>
      
        <Footer/>
     </div>
