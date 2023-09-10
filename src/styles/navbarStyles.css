@@ -45,6 +45,23 @@
     
   }
 
+  .btn-special{
+    --bs-btn-color: #b6c1df !important;
+  --bs-btn-bg: #f8f9fa !important;
+  --bs-btn-border-color: #f8f9fa !important;
+  --bs-btn-hover-color: #b6c1df !important;
+  --bs-btn-hover-bg: #d3d4d5 !important;
+  --bs-btn-hover-border-color: #c6c7c8 !important;
+  --bs-btn-focus-shadow-rgb: 211, 212, 213;
+  --bs-btn-active-color: #b6c1df !important;
+  --bs-btn-active-bg: #c6c7c8 !important;
+  --bs-btn-active-border-color: #babbbc !important;
+  --bs-btn-active-shadow: inset 0 3px 5px #b6c1df;
+  --bs-btn-disabled-color: #b6c1df !important;
+  --bs-btn-disabled-bg: #f8f9fa !important;
+  --bs-btn-disabled-border-color: #f8f9fa !important;
+  }
+
 
   /* li.nav-item::after {
     content: 'writing rubbish' !important;

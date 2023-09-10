@@ -21,7 +21,7 @@ import "../styles/navbarStyles.css"
 
 const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
 // let API_IMAGE_BIG = "https://image.tmdb.org/t/p/w1280/" ;
-const API_KEY = '2eae85518d6a6151564e13b9cd5af3df';
+
 const YOUTUBE_LINK = 'https://www.youtube.com/watch?v=';
 
 
@@ -80,7 +80,7 @@ useEffect(() => {
   const fetchMovieDetails = async () => {
     try {
     
-          const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=credits,videos,alternative_titles,similar`)
+          const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=credits,videos,alternative_titles,similar`)
       
     console.log(response.data);
     console.log(response.data.credits.crew);

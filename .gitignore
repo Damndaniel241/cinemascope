@@ -7,7 +7,7 @@
 
 #important
 .API.txt
-
+.env
 # testing
 /coverage
 
