@@ -6,7 +6,7 @@
 .pnp.js
 
 #important
-.API
+.API.txt
 .env
 # testing
 /coverage
