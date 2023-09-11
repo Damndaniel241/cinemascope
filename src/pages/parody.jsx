@@ -46,7 +46,7 @@ import Footer from './Footer';
 import Rate from '../components/Rate';
 import HomeCarouselSection from '../components/HomeCarouselSection';
 
-const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=2eae85518d6a6151564e13b9cd5af3df"
+const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`
 const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
 function Home() {
    

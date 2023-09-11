@@ -27,7 +27,7 @@ useEffect(() => {
     try {
       const response = await axios.get(`https://api.themoviedb.org/3/search/movie?`, {
         params: {
-          api_key: '2eae85518d6a6151564e13b9cd5af3df',
+          api_key: process.env.REACT_APP_API_KEY,
           query:baseTitle,
           // Other query parameters if needed
         },

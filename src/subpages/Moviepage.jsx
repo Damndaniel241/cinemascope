@@ -16,6 +16,9 @@ import SimilarMoviebox from '../components/SimilarMoviebox';
 import Moviebox from '../components/Moviebox';
 import "../styles/navbarStyles.css"
 import {reservelogo} from '../index';
+import ExpandableFlexElement from '../components/ExpandableFlexElement';
+import ExpandableFlexColumnElement from '../components/ExpandableFlexColumnElement';
+import CallPlayer from '../components/CallPlayer';
 
 
 
@@ -30,6 +33,7 @@ const YOUTUBE_LINK = 'https://www.youtube.com/watch?v=';
 
 
 function Moviepage() {
+
 
   const {movieTitle,id} = useParams();
   const [API_IMAGE_BIG, setAPIImageBig] = useState("https://image.tmdb.org/t/p/w1280/");
@@ -216,10 +220,38 @@ const backdrop_inlineStyle = {
       
           {movieTrailer && (<a name="" id="Geeks2" className="btn fs-p-10px  bg-payne-gray h6 no-link-decoration light-charcoal  text-uppercase " target='_blank' href="#" role="button" data-bs-toggle="modal" data-bs-target="#modalId"><FaPlay/> trailer</a>)}
       
-          
+          <div className="modal fade " id="modalId" tabIndex="-1" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div className="modal-content bg-space-cadet light-charcoal">
+      <div className="modal-header bg-space-cadet light-charcoal">
+        <h5 className="modal-title" id="modalTitleId">{title} trailer</h5>
+        <button type="button" className="btn-close light-charcoal" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className='iframe-container bg-space-cadet'>
+        <iframe
+          id="yt-player"
+          width="100%" // Use 100% width to fit the modal
+          height="0" // Remove the fixed height
+          style={{ maxWidth: '100%', maxHeight: '70vh' }} // Limit the height to 70% of the viewport height
+          src={`https://www.youtube.com/embed/${youtubeTrailerKey}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
+      </div>
+      <div className="modal-footer bg-space-cadet ">
+        {/* <button type="button" className="btn btn-secondary bg-payne-gray light-charcoal" data-bs-dismiss="modal">
+          Close
+        </button> */}
+      </div>
+    </div>
+  </div>
+</div>
+
           {/* <!-- Modal Body --> */}
           {/* <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard --> */}
-          <div class="modal fade  " id="modalId" tabindex="-1" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+          {/* <div class="modal fade  " id="modalId" tabindex="-1" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm modal-xl modal-lg" role="document">
               <div class="modal-content bg-space-cadet light-charcoal">
                 <div class="modal-header position-fixed bg-space-cadet light-charcoal">
@@ -229,26 +261,25 @@ const backdrop_inlineStyle = {
                 <div className='iframe-container'>
                 <iframe id="Geeks3" width="560" height="315" src={`https://www.youtube.com/embed/${youtubeTrailerKey}`} align="middle" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer ">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save</button>
+               
                 </div>
               </div>
             </div>
           </div>
-          
+           */}
           
           {/* <!-- Optional: Place to the bottom of scripts --> */}
           <script>
             const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
-          
-
-          
+           
+           
+       
           </script>
 
-       
-          
-          
+          <CallPlayer frameId="yt-player"/>
+        
           
           {/* {movieTrailer && (<a name="" id="" className="btn fs-p-10px  bg-payne-gray h6 no-link-decoration light-charcoal  text-uppercase " target='_blank' href={movieTrailer} role="button"><FaPlay/> trailer</a>)} */}
         <span className="align-items-center-lg">{runtime} mins</span>
@@ -283,14 +314,16 @@ const backdrop_inlineStyle = {
     <FilmListTabs>
        <FilmListTab label = {"tab0"} tabName={"CAST"}>
   
-        <FlexTabComponent>
-
-     {movieCast.map((movieReq)=><ButtonLink>{movieReq.name} </ButtonLink>)}
-        </FlexTabComponent>
+       
+        <ExpandableFlexElement maxChildren={5}>
+    {movieCast.map((movieReq)=><ButtonLink>{movieReq.name} </ButtonLink>)} 
+    </ExpandableFlexElement>
+        {/* </FlexTabComponent> */}
+       
        </FilmListTab>
        <FilmListTab label = {"tab1"} tabName={"CREW"}>
     
-        <FlexColumnComponent >
+        <ExpandableFlexColumnElement maxChildren={3}>
         
 
 
@@ -298,15 +331,15 @@ const backdrop_inlineStyle = {
             <div key={index}>
             <h6 className='text-uppercase light-charcoal '>{department}</h6>
             <div>
-              <FlexTabComponent>
+            <ExpandableFlexElement maxChildren={5}>
             {groupedCast[department].map((name, nameIndex) => (
               <ButtonLink to="" key={nameIndex}>{name}</ButtonLink>
             ))}
-            </FlexTabComponent>
+              </ExpandableFlexElement>
           </div>
         </div>
       ))}
-        </FlexColumnComponent>
+        </ExpandableFlexColumnElement>
       
       
       
@@ -318,9 +351,9 @@ const backdrop_inlineStyle = {
       <div>
         <h6 className="light-charcoal text-uppercase">studios</h6>
         <div>
-        <FlexTabComponent>
+        <ExpandableFlexElement maxChildren={5}>
           {production_companies.map((item)=><ButtonLink>{item.name}</ButtonLink>)}
-        </FlexTabComponent>
+          </ExpandableFlexElement>
         </div>
         </div>
       </FlexColumnComponent>
@@ -329,9 +362,9 @@ const backdrop_inlineStyle = {
         <div>
         <h6 className="light-charcoal text-uppercase">countries</h6>
         <div>
-        <FlexTabComponent>
+        <ExpandableFlexElement maxChildren={5}>
           {production_countries.map((item)=><ButtonLink>{item.name}</ButtonLink>)}
-        </FlexTabComponent>
+          </ExpandableFlexElement>
         </div>
         </div>
       </FlexColumnComponent>
