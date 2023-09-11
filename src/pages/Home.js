@@ -77,7 +77,7 @@ const [movies,setMovies]  = useState([]);
     
 
   return (
-    <div classNameName='home'>
+    <div className='home'>
     
         <section id="header" style={inlineStyles} className='gradient-image-overlay d-flex flex-column height-50vh position-relative '>
         <Header/>
@@ -97,7 +97,7 @@ const [movies,setMovies]  = useState([]);
 
 
 
-        <section id="movies" className='row text-center container-fluid  mt-5 d-flex justify-content-center align-items-center '>
+        <section id="movies" className='row text-center container-fluid mx-auto   mt-5 d-flex justify-content-center align-items-center '>
       <p className='text-start text-light h4 '>What's Popular?</p>
         
       {movies.map((movieReq)=><Moviebox key={movieReq.id} {...movieReq} />)}

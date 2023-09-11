@@ -6,7 +6,6 @@ import '../styles/navbarStyles.css';
 import classNames from 'classnames';
 import axios from 'axios';
 import MovieResults from '../components/MovieResults';
-import slugify from 'react-slugify';
 
 
 
@@ -15,21 +14,40 @@ const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 function Header() {
     const location = useLocation();
     const isHomePage = location.pathname === '/' || location.pathname.startsWith('/film/');
-    const [searchQuery,setSearchQuery] = useState();
-    const navigate = useNavigate();
+    // const [searchQuery,setSearchQuery] = useState();
+    // const navigate = useNavigate();
 
 
-  // Function to handle search input change
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
+    const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    if (query.trim() === '') {
+      setResults([]);
+      return;
+    }
+
+    const fetchData = async () => {
+    try {
+      const response = await axios.get(BASE_URL, {
+        params: {
+          query,
+          api_key: process.env.REACT_APP_API_KEY,
+         
+          // Other query parameters if needed
+        },
+      });
+
+      if (response.data && response.data.results) {
+        setResults(response.data.results);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
 
-  // Function to handle form submission
-  const handleSearchFormSubmit = (event) => {
-    event.preventDefault();
-    // Redirect to the search results page with the search query
-    navigate(`/search/${slugify(searchQuery)}`);
-  };
+  fetchData();
+}, [query]);
 
    
 
@@ -77,16 +95,17 @@ function Header() {
                         </div>
                     </li>
                 </ul>
-                // <form className="d-flex my-2 my-lg-0" onSubmit={handleSearchFormSubmit}>
-  // <input className="form-control me-sm-2" type="text"  placeholder="Search" value={searchQuery}  onChange={handleSearchInputChange}/>
-
+                <form className="d-flex my-2 my-lg-0" >
+                  
+                    <input className="form-control me-sm-2" type="text"  placeholder="Search"  value={query}
+        onChange={(e) => setQuery(e.target.value)}/>
                     <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
       </div>
     </nav>
     
-  
+    <MovieResults results={results} />
     
     
     </>
@@ -121,40 +140,6 @@ export default Header
 
 
 
-
-
-
-
-//   const [query, setQuery] = useState('');
-//   const [results, setResults] = useState([]);
-
-//   useEffect(() => {
-//     if (query.trim() === '') {
-//       setResults([]);
-//       return;
-//     }
-
-//     const fetchData = async () => {
-//     try {
-//       const response = await axios.get(BASE_URL, {
-//         params: {
-//           query,
-//           api_key: process.env.REACT_APP_API_KEY,
-         
-//           // Other query parameters if needed
-//         },
-//       });
-
-//       if (response.data && response.data.results) {
-//         setResults(response.data.results);
-//       }
-//     } catch (error) {
-//       console.error('Error fetching data:', error);
-//     }
-//   };
-
-//   fetchData();
-// }, [query]);
 
 
 

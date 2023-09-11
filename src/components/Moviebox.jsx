@@ -25,13 +25,13 @@ const newTitle = year ? `${slug}-${year}` : slug;
 
   return (
 
-    <div className='col-lg-3 col-md-6 col-12'>
+    <div className=' col-3 '>
      
-        <div className="card mb-4">
+        <div className="card mb-3 ">
         <Link to={{pathname:`/film/${id}/${newTitle}`,
          
           }}>
-          <img className="card-img-top" src={API_IMAGE+poster_path} alt="Title"/>
+          <img className="card-img-top" src={API_IMAGE+poster_path} alt={title}/>
           </Link>
           {/* <div className="card-body">
             <h4 className="card-title">{title}</h4>

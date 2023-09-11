@@ -11,6 +11,8 @@
 # testing
 /coverage
 
+./pages/subpages/parodyMoviepage.js
+./pages/parody.jsx
 # production
 /build
 

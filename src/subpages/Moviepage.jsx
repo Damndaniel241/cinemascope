@@ -15,6 +15,7 @@ import ImportantButtonLink from '../components/ImportantButtonLink';
 import SimilarMoviebox from '../components/SimilarMoviebox';
 import Moviebox from '../components/Moviebox';
 import "../styles/navbarStyles.css"
+import {reservelogo} from '../index';
 
 
 
@@ -68,7 +69,10 @@ function Moviepage() {
   const [movieCast, setMovieCast] = useState([])
   const [movieCrew, setMovieCrew] = useState([])
   const [AlternateTitles, setAlternateTitles] = useState([]);
+  const [studios,setStudios] = useState([]);
   const [similarResults, setSimilarResults] = useState([]);
+  const [youtubeTrailerKey,setYoutubeTrailerKey] = useState(null)
+
   // console.log(movieTitle)
 
   const parts = movieTitle.split('-'); // Split the title at the hyphen
@@ -99,8 +103,11 @@ useEffect(() => {
   // console.log(filteredVideos);
   if (filteredVideos.length > 0) {
 
+    const youtubeKey = filteredVideos[0].key;
     const trailerLink = `${YOUTUBE_LINK}${filteredVideos[0].key}`
+      setYoutubeTrailerKey(youtubeKey)
       setMovieTrailer(trailerLink) 
+      console.log(filteredVideos[0])
   }else {
     // Handle the case where there are no videos
     setMovieTrailer(""); // Or set it to some default value or handle it in your app logic
@@ -122,7 +129,7 @@ useEffect(() => {
 
       console.log(firstFourResults);
     
-
+      
 
       // .slice(0, 4);
 
@@ -169,6 +176,8 @@ movieCrew.forEach((person) => {
 
 
 console.log(similarResults.slice(0, 4));
+console.log(youtubeTrailerKey);
+console.log(window.innerWidth);
 // console.log(tagline)
 
 // const screeenWidth = useScreenWidth();
@@ -177,8 +186,8 @@ console.log(similarResults.slice(0, 4));
 // console.log(overview.length)
 
 
-const bigi = API_IMAGE_BIG+backdrop_path
-const intUrl =API_IMAGE_BIG+backdrop_path
+// const bigi = API_IMAGE_BIG+backdrop_path
+const intUrl = backdrop_path ? API_IMAGE_BIG+backdrop_path : reservelogo;
 // const intUrl = `url('${API_IMAGE_BIG}${backdrop_path}')`
 // const intUrl2 = intUrl.replace(/&quot;/,'"')
 // console.log("inturl=,",intUrl)
@@ -202,7 +211,46 @@ const backdrop_inlineStyle = {
         <div className="d-flex text-uppercase  "> <Link className="no-link-decoration light-charcoal ">{release_date.slice(0,4)} </Link>&nbsp;<GoDotFill/>&nbsp;Directed by
         </div>
         <h5 className="text-capitalize font-vesper mt-2"><Link className="no-link-decoration light-charcoal ">{movieDirector} </Link></h5>
-        <div className="d-flex gap-3 ">{movieTrailer && (<a name="" id="" className="btn fs-p-10px  bg-payne-gray h6 no-link-decoration light-charcoal  text-uppercase " target='_blank' href={movieTrailer} role="button"><FaPlay/> trailer</a>)}
+        <div className="d-flex gap-3 ">
+        
+      
+          {movieTrailer && (<a name="" id="Geeks2" className="btn fs-p-10px  bg-payne-gray h6 no-link-decoration light-charcoal  text-uppercase " target='_blank' href="#" role="button" data-bs-toggle="modal" data-bs-target="#modalId"><FaPlay/> trailer</a>)}
+      
+          
+          {/* <!-- Modal Body --> */}
+          {/* <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard --> */}
+          <div class="modal fade  " id="modalId" tabindex="-1" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm modal-xl modal-lg" role="document">
+              <div class="modal-content bg-space-cadet light-charcoal">
+                <div class="modal-header position-fixed bg-space-cadet light-charcoal">
+                  <h5 class="modal-title  " id="modalTitleId">{title} trailer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div className='iframe-container'>
+                <iframe id="Geeks3" width="560" height="315" src={`https://www.youtube.com/embed/${youtubeTrailerKey}`} align="middle" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          {/* <!-- Optional: Place to the bottom of scripts --> */}
+          <script>
+            const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
+          
+
+          
+          </script>
+
+       
+          
+          
+          
+          {/* {movieTrailer && (<a name="" id="" className="btn fs-p-10px  bg-payne-gray h6 no-link-decoration light-charcoal  text-uppercase " target='_blank' href={movieTrailer} role="button"><FaPlay/> trailer</a>)} */}
         <span className="align-items-center-lg">{runtime} mins</span>
         </div>
         </div>

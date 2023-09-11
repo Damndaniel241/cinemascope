@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Films from '../src/subpages/Films';
 import Moviepage from './subpages/Moviepage';
 import Subpages from './subpages/Subpages';
+import SearchResults from './components/SearchResults'; 
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/films" element={<Films/>}/>
       <Route path="/film/:id/:movieTitle" element={<Moviepage/>}/>
+      <Route path="/search/:query" element={<SearchResults/>} />
       <Route path="/*" element={<Subpages />}/>
 
     </Routes>
