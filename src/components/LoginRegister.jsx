@@ -20,7 +20,7 @@ function LoginRegister({children,classNames}) {
 {/* <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard --> */}
  <div class="modal fade" id="sign-in" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered  modal-lg  modal-md modal-xl" role="document">
-    <div class="modal-content mx-5  bg-payne-gray  my-5 p-4">
+    <div class="modal-content mx-lg-5 mx-2  bg-payne-gray  my-5 p-4">
       <div class="modal-header px-md-2 px-0">
         <h5 class="modal-title text-uppercase" id="modalTitleId">login to your account </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
