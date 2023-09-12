@@ -4,10 +4,10 @@ import Footer from './Footer';
 
 function Login() {
   return (
-    <div>
-        <Header/>
-        <div className="mx-5 bg-payne-gray rounded-4 my-5 p-4">
-          <form action="" method="">
+    <>
+        {/* <Header/> */}
+        {/* <div className="mx-5 bg-payne-gray rounded-4 my-5 p-4"> */}
+          <form action="" className='text-start ms-0' method="">
             <div class="mb-3">
               <label for="" class="form-label">Username or Email</label>
               <input type="text"
@@ -22,9 +22,9 @@ function Login() {
             <button type="submit" class="btn bg-fire-engine-red mt-3 text-uppercase text-light">Login</button>
             
           </form>
-        </div>
-        <Footer/>
-    </div>
+        
+        {/* <Footer/> */}
+    </>
   )
 }
 

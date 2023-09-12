@@ -9,6 +9,8 @@ import Rate from '../components/Rate';
 import HomeCarouselSection from '../components/HomeCarouselSection';
 import "animate.css";
 import {FaAndroid,FaApple} from 'react-icons/fa';
+import Signup from './Signup';
+import Register from '../components/Register';
 
 
 
@@ -19,6 +21,19 @@ const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
 function Home() {
    
    
+
+
+  const [showModal, setShowModal] = useState(false);
+
+  // Function to open the modal
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
 const [movies,setMovies]  = useState([]);
     useEffect(()=>{
@@ -91,7 +106,23 @@ const [movies,setMovies]  = useState([]);
 
         <div className=' gap-4 w-50-md container d-flex justify-content-center  align-items-center flex-column my-auto text-center'>
     <h1 className=" justify-content-center  align-items-center fs-1 h1-mod text-light  animate__animated animate__bounce animate__delay-2s animate__repeat-2">Track films you’ve watched.Save those you want to see. Tell your friends what’s good.  </h1>
-    <Link to="/signup" className="  align-self-center  text-light  btn bg-fire-engine-red">Get started - it's free</Link>
+
+
+
+
+<Register  classNames="bg-fire-engine-red  align-self-center  text-light  btn">Get started - it's free </Register>
+
+
+
+
+
+
+
+
+
+
+
+
     <p className='text-light h6'>The social network for film lovers. Also available on <a href="" className="light-charcoal h5"><FaApple className=''/></a>&nbsp;<a href="" className="light-charcoal h5"> <FaAndroid/> </a>
 </p>
     </div>
