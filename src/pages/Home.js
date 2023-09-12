@@ -94,7 +94,7 @@ const [movies,setMovies]  = useState([]);
   return (
     <div className='home'>
     
-        <section id="header" style={inlineStyles} className='gradient-image-overlay d-flex flex-column height-50vh position-relative '>
+        <section id="header" style={inlineStyles} className='gradient-image-overlay d-flex flex-column lg-bg-img height-50vh position-relative '>
         <Header/>
            {/* <Link><h6 className='vertical-text position-absolute'>ryan hagel</h6></Link> */}
         {/* <img src={whitelogo} style={{ width: "100%"}} alt="background white"/> */}
@@ -109,10 +109,36 @@ const [movies,setMovies]  = useState([]);
 
 
 
-<Register  classNames="bg-fire-engine-red  align-self-center  text-light  btn">Get started - it's free </Register>
+{/* <Register classNames="bg-fire-engine-red  align-self-center  text-light  btn">Get started - it's free </Register> */}
 
 
+<button className='bg-fire-engine-red  align-self-center  text-light  btn'data-bs-toggle="modal" data-bs-target="#sign-up-home" type="button">
+Get started - it's free 
+</button>
 
+<div class="modal fade" id="sign-up-home" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered  modal-lg  modal-md modal-xl" role="document">
+    <div class="modal-content mx-lg-5 mx-2  bg-payne-gray  my-5 p-4">
+      <div class="modal-header px-md-2 px-0">
+        <h5 class="modal-title text-uppercase" id="modalTitleIdRegister">join cinemascope</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body px-md-2 px-0">
+    
+        <Signup/>
+    
+      </div>
+     
+    </div>
+  </div>
+</div> 
+
+
+{/* <!-- Optional: Place to the bottom of scripts --> */}
+<script>
+  const myModal = new bootstrap.Modal(document.getElementById('sign-up-home'), options)
+
+</script>
 
 
 

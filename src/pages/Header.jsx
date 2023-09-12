@@ -61,10 +61,10 @@ function Header() {
             <div className="collapse navbar-collapse " id="collapsibleNavId">
                 <ul className="navbar-nav me-auto mt-2 mt-lg-0 text-white d-flex flex-wrap">
                     <li className="nav-item ">
-                        <LoginRegister classNames="nav-link  text-white" href="#" aria-current="page">Sign in</LoginRegister>
+                        <LoginRegister classNames="nav-link active text-white">Sign in</LoginRegister>
                     </li>
                     <li className="nav-item">
-                        <Register  classNames="nav-link text-white" href="#">create account</Register>
+                        <Register  classNames="nav-link text-white" >create account</Register>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link text-white" href="#">films</Link>

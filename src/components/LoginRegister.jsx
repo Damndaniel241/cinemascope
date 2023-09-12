@@ -22,7 +22,7 @@ function LoginRegister({children,classNames}) {
   <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered  modal-lg  modal-md modal-xl" role="document">
     <div class="modal-content mx-lg-5 mx-2  bg-payne-gray  my-5 p-4">
       <div class="modal-header px-md-2 px-0">
-        <h5 class="modal-title text-uppercase" id="modalTitleId">login to your account </h5>
+        <h5 class="modal-title text-uppercase" id="modalTitleIdLoginRegister">login  </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body px-md-2 px-0">
@@ -38,7 +38,7 @@ function LoginRegister({children,classNames}) {
 
 {/* <!-- Optional: Place to the bottom of scripts --> */}
 <script>
-  const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
+  const myModal = new bootstrap.Modal(document.getElementById('sign-in'), options)
 
 </script>
 

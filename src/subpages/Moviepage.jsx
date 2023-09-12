@@ -205,7 +205,7 @@ const backdrop_inlineStyle = {
     <div>
       <Header/>
      
-       <section style={backdrop_inlineStyle} className=' height-100vh height-50vh gradient-image-overlay d-flex flex-column position-relative '>
+       <section style={backdrop_inlineStyle} className=' height-100vh height-50vh bg-no-repeat gradient-image-overlay d-flex flex-column position-relative '>
       
        </section>
       <section id="first-details" className="d-flex justify-content-between align-item-center mx-md-4 mx-2  my-4">
