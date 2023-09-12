@@ -91,8 +91,8 @@ const [movies,setMovies]  = useState([]);
 
         <div className=' gap-4 w-50-md container d-flex justify-content-center  align-items-center flex-column my-auto text-center'>
     <h1 className=" justify-content-center  align-items-center fs-1 h1-mod text-light  animate__animated animate__bounce animate__delay-2s animate__repeat-2">Track films you’ve watched.Save those you want to see. Tell your friends what’s good.  </h1>
-    <Link to="/signup" className="d-block w-50 align-self-center container text-light  btn bg-fire-engine-red">Get started - it's free</Link>
-    <p className='text-light'>The social network for film lovers. Also available on <a href="" className=""><FaApple/></a><a href="" className=""> <FaAndroid/> </a>
+    <Link to="/signup" className="  align-self-center  text-light  btn bg-fire-engine-red">Get started - it's free</Link>
+    <p className='text-light h6'>The social network for film lovers. Also available on <a href="" className="light-charcoal h5"><FaApple className=''/></a>&nbsp;<a href="" className="light-charcoal h5"> <FaAndroid/> </a>
 </p>
     </div>
 
