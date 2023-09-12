@@ -71,10 +71,11 @@ const [movies,setMovies]  = useState([]);
         }, []); 
          
         const inlineStyles = {
-          backgroundImage: 'linear-gradient(103deg, rgba(2,0,36,1) 0%, rgba(20,20,22,0.6643032212885154) 21%, rgba(17,20,20,0.6474964985994398) 75%, rgba(17,20,20,1) 100%),'+HomeImageBig
+          backgroundImage: 'linear-gradient(-180deg, rgba(250,247,242,0) 57%, rgba(43,45,65,1) 91%),'+HomeImageBig
         
         };
     
+        // linear-gradient(103deg, rgba(2,0,36,1) 0%, rgba(20,20,22,0.6643032212885154) 21%, rgba(17,20,20,0.6474964985994398) 75%, rgba(17,20,20,1) 100%),linear-gradient(-180deg, rgba(250,247,242,0) 57%, rgba(43,45,65,1) 91%),'+HomeImageBig
 
   return (
     <div className='home'>
@@ -83,17 +84,17 @@ const [movies,setMovies]  = useState([]);
         <Header/>
            {/* <Link><h6 className='vertical-text position-absolute'>ryan hagel</h6></Link> */}
         {/* <img src={whitelogo} style={{ width: "100%"}} alt="background white"/> */}
+    
+        
+        </section>
+     
+
         <div className=' gap-4 w-50-md container d-flex justify-content-center  align-items-center flex-column my-auto text-center'>
     <h1 className=" justify-content-center  align-items-center fs-1 h1-mod text-light  animate__animated animate__bounce animate__delay-2s animate__repeat-2">Track films you’ve watched.Save those you want to see. Tell your friends what’s good.  </h1>
     <Link to="/signup" className="d-block w-50 align-self-center container text-light  btn bg-fire-engine-red">Get started - it's free</Link>
     <p className='text-light'>The social network for film lovers. Also available on <a href="" className=""><FaApple/></a><a href="" className=""> <FaAndroid/> </a>
 </p>
     </div>
-        
-        </section>
-     
-
-       
 
 
 
