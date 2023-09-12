@@ -9,6 +9,7 @@ import MovieResults from '../components/MovieResults';
 import slugify from 'react-slugify';
 import Register from '../components/Register';
 import LoginRegister from '../components/LoginRegister';
+import {GiHamburgerMenu} from 'react-icons/gi'
 
 
 
@@ -53,10 +54,10 @@ function Header() {
     <nav className={navbarClasses}>
           <div className="container-md">
             <Link className="navbar-brand" to="/"><img className="logo" src={brandlogo} alt="Company Logo" /></Link>
-            <button className="navbar-toggler btn-special  d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            <a className="navbar-toggler text-white   d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
+                {/* <span className="navbar-toggler-icon"></span> */} <GiHamburgerMenu/>
+            </a>
             <div className="collapse navbar-collapse " id="collapsibleNavId">
                 <ul className="navbar-nav me-auto mt-2 mt-lg-0 text-white d-flex flex-wrap">
                     <li className="nav-item ">

@@ -13,11 +13,11 @@ function Register({children,classNames}) {
     <>
     
 {/* <!-- Modal trigger button --> */}
-<button  className={combinedClassNames} data-bs-toggle="modal" data-bs-target="#modalId">{children}</button>
+<button  className={combinedClassNames} data-bs-toggle="modal" data-bs-target="#sign-up">{children}</button>
 {/* 
 {/* <!-- Modal Body --> */}
 {/* <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard --> */}
- <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+ <div class="modal fade" id="sign-up" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered  modal-lg  modal-md modal-xl" role="document">
     <div class="modal-content mx-5  bg-payne-gray  my-5 p-4">
       <div class="modal-header px-md-2 px-0">
