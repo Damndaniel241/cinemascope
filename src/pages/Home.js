@@ -16,6 +16,7 @@ import {IoStarSharp,IoMdStar} from 'react-icons/io';
 import {TfiLayoutListThumbAlt} from 'react-icons/tfi'
 import {SiWindows11} from 'react-icons/si'
 import {BsJournalCheck} from 'react-icons/bs'
+import SimpleSlider from '../components/SimpleSlider';
 
 
 
@@ -212,7 +213,7 @@ Get started - it's free
         {/* <Rate rating={rating} onRating={(rate) => setRating(rate)}/> */}
         {/* {movies.map((movieReq)=><HomeCarouselSection key={movieReq.id} id={movieReq.id} {...movieReq} />)} */}
          
-
+  {/* <SimpleSlider/> */}
         <Footer/>
     </div>
   )

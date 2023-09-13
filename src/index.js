@@ -7,6 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import 'aos/dist/aos.css';
 import 'aos/dist/aos.js';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 import brandlogo from '../src/cinemascopelogo.png';
 import reservelogo from '../src/cinemascopelogo2.png';
 export {reservelogo}

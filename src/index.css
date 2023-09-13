@@ -231,14 +231,24 @@ h1-mod{
   z-index: 1;
 }
 
+.lg-bg-repeat-round{
+  background-repeat: round !important;
+}
+
+
+
 
 
 @media screen and (max-width:768px){
   .gradient-image-overlay{
     background: rgb(250,247,242);
-/* background: linear-gradient(-180deg, rgba(255,253,249,0.5690651260504201) 0%, rgba(56,61,59,0.9108018207282913) 71%); */
-background: linear-gradient(180deg, rgba(250,247,242,0) 0%, rgba(43,45,65,1) 9%);
+background: linear-gradient(-180deg, rgba(255,253,249,0.5690651260504201) 0%, rgba(56,61,59,0.9108018207282913) 71%);
+/* background: linear-gradient(180deg, rgba(250,247,242,0) 0%, rgba(43,45,65,1) 9%); */
   }
+
+ .bg-pos-center{
+  background-position: center !important;
+ }
 
   .lg-bg-img{
   background-image: "linear-gradient(-180deg, rgba(250,247,242,0) 57%, rgba(43,45,65,1) 91%),url('https://image.tmdb.org/t/p/w300//35z8hWuzfFUZQaYog8E9LsXW3iI.jpg')" !important;

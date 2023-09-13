@@ -197,7 +197,7 @@ const intUrl = backdrop_path ? API_IMAGE_BIG+backdrop_path : reservelogo;
 // console.log("inturl=,",intUrl)
 // console.log(intUrl2);
 const backdrop_inlineStyle = {
-  backgroundImage: "linear-gradient(-180deg, rgba(250,247,242,0) 20%, rgba(43,45,65,1) 76%), url(" + intUrl+ ")"
+  backgroundImage: "linear-gradient(-180deg, rgba(250,247,242,0) 49%, rgba(43,45,65,1) 76%), url(" + intUrl+ ")"
   
 }
 
@@ -205,7 +205,7 @@ const backdrop_inlineStyle = {
     <div>
       <Header/>
      
-       <section style={backdrop_inlineStyle} className=' height-100vh height-50vh bg-no-repeat  d-flex flex-column position-relative '>
+       <section style={backdrop_inlineStyle} className=' height-100vh height-50vh lg-bg-repeat-round bg-no-repeat bg-pos-center  d-flex flex-column position-relative '>
       
        </section>
       <section id="first-details" className="d-flex justify-content-between align-item-center mx-md-4 mx-2  my-4">
