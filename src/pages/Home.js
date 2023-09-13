@@ -197,7 +197,7 @@ Get started - it's free
 </section>
 
 
-        <section id="movies" className='row text-center container-fluid mx-auto   mt-5 d-flex justify-content-center align-items-center '>
+        <section id="movies" className='row gx-3 text-center container-fluid mx-auto   mt-5 d-flex justify-content-center align-items-center '>
     
     
   <p className='text-start text-light h4 '>What's Popular?</p>

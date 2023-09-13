@@ -67,7 +67,7 @@ function Header() {
                         <Register  classNames="nav-link text-white" >create account</Register>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-white" href="#">films</Link>
+                        <Link className="nav-link  text-white" href="#">films</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link text-white" href="#">members</Link>
