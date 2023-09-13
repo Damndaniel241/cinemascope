@@ -6,16 +6,21 @@ import whitelogo from '../whitebackground.png';
 import Moviebox from '../components/Moviebox';
 import Footer from './Footer';
 import Rate from '../components/Rate';
-import HomeCarouselSection from '../components/HomeCarouselSection';
+
 import "animate.css";
-import {FaAndroid,FaApple} from 'react-icons/fa';
+import {FaAndroid,FaApple,FaHeart,FaStar} from 'react-icons/fa';
 import Signup from './Signup';
 import Register from '../components/Register';
-
+import {BsFillEyeFill} from 'react-icons/bs';
+import {IoStarSharp,IoMdStar} from 'react-icons/io';
+import {TfiLayoutListThumbAlt} from 'react-icons/tfi'
+import {SiWindows11} from 'react-icons/si'
+import {BsJournalCheck} from 'react-icons/bs'
 
 
 
 const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`
+const API_URL_TRENDING = `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}` 
 const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
 function Home() {
    
@@ -154,8 +159,48 @@ Get started - it's free
 
 
 
+<section className="mx-md-4 mx-2 my-4 ">
+<div className="row g-2">
+  <p className='light-charcoal text-uppercase'>cinemascope lets you...</p>
+  
+     <div className='col-12 col-lg-4  '>
+     <Link className="d-flex bg-payne-gray bg-about-red rounded-2  no-link-decoration gap-3 p-3 light-charcoal  ">
+     <span className='h1'><BsFillEyeFill/></span><span className='text-capitalize'>keep track of every film you've ever watched (or just from the day you join)</span>
+     </Link></div>
+     <div className='col-12 col-lg-4  '>
+     <Link className="d-flex bg-payne-gray bg-about-orange  rounded-2  no-link-decoration gap-3 p-3 light-charcoal  ">
+     <span className='h1'><FaHeart/></span><span className='text-capitalize'>show lots of love ,excitement for your favourite films, lists and reviews with a like</span>
+     </Link></div>
+     <div className='col-12 col-lg-4  '>
+     <Link className="d-flex bg-payne-gray bg-about-blue rounded-2  no-link-decoration gap-3 p-3 light-charcoal  ">
+     <span className='h1'><TfiLayoutListThumbAlt/></span><span className='text-capitalize'>write and share reviews, and follow friends and other members to read theirs</span>
+     </Link></div>
+     <div className='col-12 col-lg-4  '>
+     <Link className="d-flex bg-payne-gray bg-about-red rounded-2  no-link-decoration gap-3 p-3 light-charcoal ">
+     <span className='h1'><IoMdStar/></span><span className='text-capitalize'>rate each film on a five-star scale (with halves) to record and share your reaction</span>
+     </Link></div>
+     <div className='col-12 col-lg-4  '>
+     <Link className="d-flex bg-payne-gray bg-about-orange rounded-2  no-link-decoration gap-3 p-3 light-charcoal  ">
+     <span className='h1'><BsJournalCheck/></span><span className='text-capitalize'>keep a diary of your film watching (and upgrade to <strong className="text-capitalize text-light "> pro</strong> for comprehensive stats) </span>
+     </Link></div>
+     <div className='col-12 col-lg-4  '>
+     <Link className="d-flex bg-payne-gray bg-about-blue rounded-2  no-link-decoration gap-3 p-3 light-charcoal ">
+     <span className='h1'><SiWindows11/></span><span className='text-capitalize'>compile and share list of films on any topic and keep a watchlist of films to see</span>
+     </Link></div>
+ {/* {BsFillEyeFill}  {IoStarSharp}
+ {TfiLayoutListThumbAlt}
+ {SiWindows11} 
+ {BsJournalCheck}  */}
+   
+  </div>
+  
+</section>
+
+
         <section id="movies" className='row text-center container-fluid mx-auto   mt-5 d-flex justify-content-center align-items-center '>
-      <p className='text-start text-light h4 '>What's Popular?</p>
+    
+    
+  <p className='text-start text-light h4 '>What's Popular?</p>
         
       {movies.map((movieReq)=><Moviebox key={movieReq.id} {...movieReq} />)}
     

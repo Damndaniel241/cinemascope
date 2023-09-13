@@ -52,9 +52,9 @@ function Header() {
   return (
     <>
     <nav className={navbarClasses}>
-          <div className="container-md">
+          <div className="container-lg">
             <Link className="navbar-brand" to="/"><img className="logo" src={brandlogo} alt="Company Logo" /></Link>
-            <a className="navbar-toggler text-white   d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            <a className="navbar-toggler text-white d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation">
                 {/* <span className="navbar-toggler-icon"></span> */} <GiHamburgerMenu/>
             </a>
@@ -81,9 +81,9 @@ function Header() {
                     </li>
                 </ul>
                 // <form className="d-flex my-2 my-lg-0" onSubmit={handleSearchFormSubmit}>
-  // <input className="form-control me-sm-2" type="text"  placeholder="Search" value={searchQuery}  onChange={handleSearchInputChange}/>
+   <input className="form-control rounded-8 me-sm-2  fs-1rem" type="text"  placeholder="Search movie.." value={searchQuery}  onChange={handleSearchInputChange}/>
 
-                    <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+                    <button className="btn btn-outline-danger my-2 my-sm-0  fs-1rem" type="submit">Search</button>
                 </form>
             </div>
       </div>

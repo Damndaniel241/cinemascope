@@ -91,6 +91,34 @@ background-color:#d4062a !important;
   background-color: #b6c1df !important;
 }
 
+.bg-about-red{
+  background-color: inherit;
+}
+
+.bg-about-red:hover{
+ background-color: #d4062a !important;
+ color:#fff !important;
+}
+
+
+.bg-about-orange{
+  background-color: inherit;
+}
+
+.bg-about-orange:hover{
+ background-color: #f77f00 !important;
+ color:#fff !important;
+}
+
+.bg-about-blue{
+  background-color: inherit;
+}
+
+.bg-about-blue:hover{
+ background-color: #3a86ff !important;
+ color:#fff !important;
+}
+
 .no-link-decoration{
   text-decoration: none !important;  
 }
@@ -103,6 +131,14 @@ background-color:#d4062a !important;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.height-2em{
+  height: 2em !important;
+}
+
+.fs-1rem{
+  font-size: 1rem;
 }
 
 .vertical-text {
@@ -201,6 +237,7 @@ h1-mod{
   .gradient-image-overlay{
     /* background: rgb(255,253,249); */
 background: linear-gradient(-180deg, rgba(255,253,249,0.5690651260504201) 0%, rgba(56,61,59,0.9108018207282913) 71%);
+/* background: linear-gradient(-180deg, rgba(250,247,242,0) 57%, rgba(43,45,65,1) 91%); */
   }
 
   .lg-bg-img{
