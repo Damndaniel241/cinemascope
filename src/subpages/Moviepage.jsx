@@ -15,7 +15,7 @@ import ImportantButtonLink from '../components/ImportantButtonLink';
 import SimilarMoviebox from '../components/SimilarMoviebox';
 import Moviebox from '../components/Moviebox';
 import "../styles/navbarStyles.css"
-import {reservelogo} from '../index';
+import {reservelogo,noImage} from '../index';
 import ExpandableFlexElement from '../components/ExpandableFlexElement';
 import ExpandableFlexColumnElement from '../components/ExpandableFlexColumnElement';
 import CallPlayer from '../components/CallPlayer';
@@ -293,7 +293,7 @@ const backdrop_inlineStyle = {
        <p className="text-light">the runtime is {runtime}</p>
        <p className="text-light">{tagline}</p> */}
       {/* <div className=" rounded-3"> */}
-      <img className="w-25 " src={API_IMAGE + poster_path} alt={title} />
+      <img className="w-25 " src={poster_path ? API_IMAGE + poster_path : noImage} alt={title} />
        
       {/* </div> */}
 

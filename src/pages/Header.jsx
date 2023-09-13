@@ -80,7 +80,7 @@ function Header() {
                         </div>
                     </li>
                 </ul>
-                // <form className="d-flex my-2 my-lg-0" onSubmit={handleSearchFormSubmit}>
+                 <form className="d-flex my-2 my-lg-0" onSubmit={handleSearchFormSubmit}>
    <input className="form-control rounded-8 me-sm-2  fs-1rem" type="text"  placeholder="Search movie.." value={searchQuery}  onChange={handleSearchInputChange}/>
 
                     <button className="btn btn-outline-danger my-2 my-sm-0  fs-1rem" type="submit">Search</button>

@@ -12,7 +12,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 import brandlogo from '../src/cinemascopelogo.png';
 import reservelogo from '../src/cinemascopelogo2.png';
-export {reservelogo}
+import noImage from '../src/no-image-icon.png';
+
+export {reservelogo,noImage}
 export {brandlogo};
 
 

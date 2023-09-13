@@ -6,7 +6,7 @@ import whitelogo from '../whitebackground.png';
 import Moviebox from '../components/Moviebox';
 import Footer from './Footer';
 import Rate from '../components/Rate';
-
+import axios from 'axios';
 import "animate.css";
 import {FaAndroid,FaApple,FaHeart,FaStar} from 'react-icons/fa';
 import Signup from './Signup';
@@ -17,6 +17,7 @@ import {TfiLayoutListThumbAlt} from 'react-icons/tfi'
 import {SiWindows11} from 'react-icons/si'
 import {BsJournalCheck} from 'react-icons/bs'
 import SimpleSlider from '../components/SimpleSlider';
+import MovieSlider from '../components/MovieSlider';
 
 
 
@@ -41,6 +42,8 @@ function Home() {
   };
 
 const [movies,setMovies]  = useState([]);
+
+const [trendingMovies, setTrendingMovies] = useState([])
     useEffect(()=>{
       fetch(API_URL)
       .then((res)=>res.json())
@@ -51,6 +54,32 @@ const [movies,setMovies]  = useState([]);
     },[])
 
   const [rating,setRating] = useState(0);
+
+
+useEffect(() => {
+  const fetchMovieDetails = async () => {
+    try {
+    
+          const response = await axios.get(`${API_URL_TRENDING}`)
+      
+    console.log(response.data.results);
+  
+
+    // console.log(response.data.credits.crew);
+    // console.log(response.data.videos);
+    setTrendingMovies(response.data.results);
+   
+
+      
+    
+    } catch (error) {
+      console.error('Error fetching movie details:', error);
+    }
+  };
+
+
+  fetchMovieDetails();
+}, []);
 
 
   const backgroundImageUrl = 'url('+whitelogo+')' ;
@@ -198,7 +227,12 @@ Get started - it's free
 </section>
 
 
-        <section id="movies" className='row gx-3 text-center container-fluid mx-auto   mt-5 d-flex justify-content-center align-items-center '>
+<section className="mx-md-4 mx-2">
+  <p className="text-start text-light h4 text-capitalize "> trending today...</p>
+  <SimpleSlider>{trendingMovies.map((movieSlide)=><MovieSlider key={movieSlide.id} {...movieSlide} />)}</SimpleSlider>
+</section>
+
+        <section id="movies" className='row g-2 text-center container-fluid mx-auto mb-3   mt-5 d-flex justify-content-center align-items-center '>
     
     
   <p className='text-start text-light h4 '>What's Popular?</p>
@@ -211,9 +245,11 @@ Get started - it's free
   
         
         {/* <Rate rating={rating} onRating={(rate) => setRating(rate)}/> */}
-        {/* {movies.map((movieReq)=><HomeCarouselSection key={movieReq.id} id={movieReq.id} {...movieReq} />)} */}
+       
          
-  {/* <SimpleSlider/> */}
+  
+
+  
         <Footer/>
     </div>
   )

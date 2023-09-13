@@ -5,7 +5,7 @@ import { noImage } from '../index';
 
 const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
 
-function Moviebox({title,poster_path,vote_average,release_date,overview,backdrop_path,id}) {
+function MovieSlider({title,poster_path,vote_average,release_date,overview,backdrop_path,id}) {
   const yearPattern = /(\d{4})-\d{2}-\d{2}/;
   const match = release_date.match(yearPattern);
   const year = match ? match[1] : null;
@@ -26,12 +26,10 @@ const newTitle = year ? `${slug}-${year}` : slug;
 
   return (
 
-    <div className=' col-3 '>
+    // <div className=' col-3 '>
      
-        <div className="card ">
-        <Link to={{pathname:`/film/${id}/${newTitle}`,
-         
-          }}>
+        <div className="card mx-1 ">
+        <Link to={{pathname:`/film/${id}/${newTitle}`,}}>
           <img className="card-img-top" src={poster_path ?API_IMAGE+poster_path:noImage} alt={title}/>
           </Link>
           {/* <div className="card-body">
@@ -40,8 +38,8 @@ const newTitle = year ? `${slug}-${year}` : slug;
           </div> */}
         </div>
        
-    </div>
+    // </div>
   )
 }
 
-export default Moviebox
+export default MovieSlider
