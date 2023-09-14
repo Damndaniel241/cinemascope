@@ -9,10 +9,13 @@ import Films from '../src/subpages/Films';
 import Moviepage from './subpages/Moviepage';
 import Subpages from './subpages/Subpages';
 import SearchResults from './components/SearchResults'; 
+import { SimilarResultsProvider } from '../src/subpages/film/SimilarResultsContext';
+import SimilarMoviesPage from './subpages/film/SimilarMoviesPage';
 
 
 function App() {
   return (
+    <>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home/>}/>
@@ -26,6 +29,13 @@ function App() {
     </Routes>
     
     </BrowserRouter>
+    
+    <SimilarResultsProvider>
+      <SimilarMoviesPage/>
+      
+    
+    </SimilarResultsProvider>
+    </>
   );
 }
 

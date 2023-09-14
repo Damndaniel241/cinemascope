@@ -3,6 +3,7 @@ import {Link,useParams,useLocation} from 'react-router-dom'
 import Header from '../pages/Header'
 import Footer from '../pages/Footer'
 import axios from 'axios';
+import slugify from 'react-slugify';
 import '../index.css';
 import {FaPlay} from 'react-icons/fa';
 import {GoDotFill} from 'react-icons/go';
@@ -19,6 +20,8 @@ import {reservelogo,noImage} from '../index';
 import ExpandableFlexElement from '../components/ExpandableFlexElement';
 import ExpandableFlexColumnElement from '../components/ExpandableFlexColumnElement';
 import CallPlayer from '../components/CallPlayer';
+import $ from 'jquery';
+// import SimilarMoviesPage from './film/SimilarMoviesPage';
 
 
 
@@ -34,6 +37,13 @@ const YOUTUBE_LINK = 'https://www.youtube.com/watch?v=';
 
 function Moviepage() {
 
+
+
+  const jQueryCode = () =>{
+    $("#modalId").on('hidden.bs.modal',function(e){
+      $("#modalId iframe").attr("src",$("#modalId iframe").attr("src"))
+    });
+  }
 
   const {movieTitle,id} = useParams();
   const [API_IMAGE_BIG, setAPIImageBig] = useState("https://image.tmdb.org/t/p/w1280/");
@@ -165,7 +175,7 @@ if (movieData === null) {
 
 const { backdrop_path, title, overview, poster_path, release_date,
   imdb_id,runtime,tagline,homepage,production_companies,genres,budget,
-production_countries,spoken_languages } = movieData;
+production_countries,spoken_languages,similar } = movieData;
 
 
 const groupedCast = {};
@@ -272,13 +282,21 @@ const backdrop_inlineStyle = {
           
           {/* <!-- Optional: Place to the bottom of scripts --> */}
           <script>
-            const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
+            const myModal = new bootstrap.Modal(document.getElementById('modalId'), options);
            
+{/* 
+            $("#modalId").on('hidden.bs.modal',function(e){
+              $("#modalId iframe").attr("src",$("#modalId iframe").attr("src"))
+            })
+            */}
            
        
           </script>
 
-          <CallPlayer frameId="yt-player"/>
+        
+        
+
+          {/* <CallPlayer frameId="yt-player"/> */}
         
           
           {/* {movieTrailer && (<a name="" id="" className="btn fs-p-10px  bg-payne-gray h6 no-link-decoration light-charcoal  text-uppercase " target='_blank' href={movieTrailer} role="button"><FaPlay/> trailer</a>)} */}
@@ -308,6 +326,9 @@ const backdrop_inlineStyle = {
 
    
      </section>
+
+
+     {/* <SimilarMoviesPage similar={similar} /> */}
 
      <section className='mb-4 ms-md-4 ms-2 light-charcoal'>
      
@@ -347,6 +368,7 @@ const backdrop_inlineStyle = {
 
 
        <FilmListTab label = {"tab2"} tabName={"DETAILS"}>
+       {production_companies.length > 0 && 
       <FlexColumnComponent>
       <div>
         <h6 className="light-charcoal text-uppercase">studios</h6>
@@ -356,8 +378,9 @@ const backdrop_inlineStyle = {
           </ExpandableFlexElement>
         </div>
         </div>
-      </FlexColumnComponent>
+      </FlexColumnComponent>}
 
+      {production_countries.length > 0 &&
       <FlexColumnComponent>
         <div>
         <h6 className="light-charcoal text-uppercase">countries</h6>
@@ -367,7 +390,7 @@ const backdrop_inlineStyle = {
           </ExpandableFlexElement>
         </div>
         </div>
-      </FlexColumnComponent>
+      </FlexColumnComponent>}
 
       {AlternateTitles.length > 0 && (
         <FlexColumnComponent>
@@ -404,15 +427,19 @@ const backdrop_inlineStyle = {
 
 <section className='mb-4 light-charcoal  mx-md-4 mx-2'>
   More at &nbsp;
-  <ImportantButtonLink to="www.nairaland.com">imdb</ImportantButtonLink> &nbsp;
-  <ImportantButtonLink to="www.nairaland.com">tmdb</ImportantButtonLink>
+{/* <a className='no-link-decoration imp-content imp-border-2 light-charcoal' href="www.nairaland.com">imdb</a> &nbsp; */}
+{/* <a className='no-link-decoration imp-content imp-border-2 light-charcoal' href="www.nairaland.com">tmdb</a> */}
+<ImportantButtonLink href={`https://www.imdb.com/title/${imdb_id}/maindetails`}>imdb</ImportantButtonLink> &nbsp;
+<ImportantButtonLink href={`https://www.themoviedb.org/movie/${id}-${title}`}>tmdb</ImportantButtonLink>
 </section>
+
+
     
 <section id="movies" className='row text-center container-fluid mx-auto d-flex justify-content-center align-items-center '>
 
 <div className='d-flex  justify-content-between '>
-    <Link to="" className='no-link-decoration light-charcoal text-uppercase '>Similar</Link>
-    <Link to="" className='no-link-decoration light-charcoal text-uppercase '>All</Link>
+    <Link to={`/film/${id}/${slugify(title)}/similar`} className='no-link-decoration light-charcoal text-uppercase '>Similar</Link>
+    <Link to={`/film/${id}/${slugify(title)}/similar`} className='no-link-decoration light-charcoal text-uppercase '>All</Link>
     </div>
     <hr className=' light-charcoal'/>
     { similarResults.slice(0, 4).map((movie)=> <Moviebox key={movie.id}{...movie}/>)}

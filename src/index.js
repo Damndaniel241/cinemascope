@@ -13,6 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 import brandlogo from '../src/cinemascopelogo.png';
 import reservelogo from '../src/cinemascopelogo2.png';
 import noImage from '../src/no-image-icon.png';
+import $ from 'jquery';
 
 export {reservelogo,noImage}
 export {brandlogo};
