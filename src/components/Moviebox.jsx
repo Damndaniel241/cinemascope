@@ -1,11 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { noImage } from '../index';
+import slugify from 'react-slugify';
 
 
 const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
 
-function Moviebox({title,poster_path,vote_average,release_date,overview,backdrop_path,id}) {
+function Moviebox({title,poster_path,vote_average,release_date,overview,backdrop_path,id, to,state}) {
+  const navigate = useNavigate();
+
+  const handleImageClick = () => {
+    // Navigate to the film page with moviePageId as state
+    navigate(`/film/${slugify(title)}`, { state: { moviePageId: id } });
+  };
+
+
   const yearPattern = /(\d{4})-\d{2}-\d{2}/;
   const match = release_date.match(yearPattern);
   const year = match ? match[1] : null;
@@ -34,6 +43,16 @@ const newTitle = year ? `${slug}-${year}` : slug;
           }}>
           <img className="card-img-top" src={poster_path ?API_IMAGE+poster_path:noImage} alt={title}/>
           </Link>
+       {/* <Link   key={id}
+          to={{
+            pathname: `/film/${slugify(title)}`,
+            state: { moviePageId: id },
+          }}> */}
+
+          {/* <Link to={`/film/${slugify(title)}`}> */}
+
+{/* <img className="card-img-top" src={poster_path ?API_IMAGE+poster_path:noImage} alt={title} onClick={handleImageClick} /> */}
+          {/* </Link> */}
           {/* <div className="card-body">
             <h4 className="card-title">{title}</h4>
             <p className="card-text">{overview}</p>

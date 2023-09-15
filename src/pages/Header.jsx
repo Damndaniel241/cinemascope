@@ -47,7 +47,7 @@ function Header() {
     );
 
 
-    console.log(isHomePage);
+    // console.log(isHomePage);
 
   return (
     <>

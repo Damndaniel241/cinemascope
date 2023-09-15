@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {Link,useParams,useLocation} from 'react-router-dom'
+import {Link,useParams,useLocation,useNavigate} from 'react-router-dom'
 import Header from '../pages/Header'
 import Footer from '../pages/Footer'
 import axios from 'axios';
@@ -36,7 +36,13 @@ const YOUTUBE_LINK = 'https://www.youtube.com/watch?v=';
 
 
 function Moviepage() {
+  // const navigate = useNavigate();
 
+  // const handleButtonClick = (movieReq) => {
+  //   // Navigate to ActorPage and pass movieReq.id as state
+  //   navigate(`/actor/${slugify(movieReq.name)}/`, { state: { movieReqId: movieReq.id } });
+  // };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
   const jQueryCode = () =>{
@@ -303,19 +309,9 @@ const backdrop_inlineStyle = {
         <span className="align-items-center-lg">{runtime} mins</span>
         </div>
         </div>
-            {/* <p className="text-light">Overview: {overview}</p>
-       <p className='text-light'>the id for this movie is {id}</p>
-       <p className="text-light">the director is  <FaPlay/> {movieDirector} </p>
-       <p className="text-light">the movie link is {movieTrailer}</p>
-       <p className="text-light">the release date is {release_date.slice(0,4)}</p>
-       <p className="text-light">the runtime is {runtime}</p>
-       <p className="text-light">{tagline}</p> */}
-      {/* <div className=" rounded-3"> */}
+          
       <img className="w-25 " src={poster_path ? API_IMAGE + poster_path : noImage} alt={title} />
-       
-      {/* </div> */}
-
-       {/* <div id="overview-id" className='d-none'>{overview}</div> */}
+ 
         
       </section>
 
@@ -337,7 +333,15 @@ const backdrop_inlineStyle = {
   
        
         <ExpandableFlexElement maxChildren={5}>
-    {movieCast.map((movieReq)=><ButtonLink>{movieReq.name} </ButtonLink>)} 
+    {/* {movieCast.map((movieReq)=><ButtonLink to={`/actor/${movieReq.id}${slugify(movieReq.name)}/`}>{movieReq.name} </ButtonLink>)}  */}
+    {/* {movieCast.map((movieReq)=><button key={movieReq.id} onClick={() => handleButtonClick(movieReq)}>{movieReq.name} </button>)} */}
+
+    {movieCast.map((movieReq)=> <ButtonLink key={movieReq.id} to={`/actor/${slugify(movieReq.name)}/`} state={{ movieReqId: movieReq.id }}
+        >{movieReq.name}</ButtonLink>)}
+
+
+
+
     </ExpandableFlexElement>
         {/* </FlexTabComponent> */}
        

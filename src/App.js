@@ -11,11 +11,12 @@ import Subpages from './subpages/Subpages';
 import SearchResults from './components/SearchResults'; 
 import { SimilarResultsProvider } from '../src/subpages/film/SimilarResultsContext';
 import SimilarMoviesPage from './subpages/film/SimilarMoviesPage';
+import ActorPage from './subpages/ActorPage';
 
 
 function App() {
   return (
-    <>
+    // <>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home/>}/>
@@ -23,6 +24,7 @@ function App() {
     
       <Route path="/films" element={<Films/>}/>
       <Route path="/film/:id/:movieTitle" element={<Moviepage/>}/>
+      <Route path="/actor/:name" element={<ActorPage/>}/>
       <Route path="/search/:query" element={<SearchResults/>} />
       <Route path="/*" element={<Subpages />}/>
 
@@ -30,12 +32,8 @@ function App() {
     
     </BrowserRouter>
     
-    <SimilarResultsProvider>
-      <SimilarMoviesPage/>
-      
-    
-    </SimilarResultsProvider>
-    </>
+  
+    // </>
   );
 }
 
