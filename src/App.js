@@ -14,6 +14,7 @@ import SimilarMoviesPage from './subpages/film/SimilarMoviesPage';
 import ActorPage from './subpages/ActorPage';
 
 
+
 function App() {
   return (
     // <>

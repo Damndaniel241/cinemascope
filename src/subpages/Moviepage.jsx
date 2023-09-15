@@ -22,6 +22,9 @@ import ExpandableFlexColumnElement from '../components/ExpandableFlexColumnEleme
 import CallPlayer from '../components/CallPlayer';
 import $ from 'jquery';
 // import SimilarMoviesPage from './film/SimilarMoviesPage';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSimilarResults,setMoviePosterPath, setMovieTitle,setMovieYear } from '../actionTypes/actions';
+
 
 
 
@@ -51,7 +54,7 @@ function Moviepage() {
     });
   }
 
-  const {movieTitle,id} = useParams();
+  const {id} = useParams();
   const [API_IMAGE_BIG, setAPIImageBig] = useState("https://image.tmdb.org/t/p/w1280/");
 
  const location = useLocation();
@@ -90,14 +93,18 @@ function Moviepage() {
   const [movieCrew, setMovieCrew] = useState([])
   const [AlternateTitles, setAlternateTitles] = useState([]);
   const [studios,setStudios] = useState([]);
-  const [similarResults, setSimilarResults] = useState([]);
+  // const [similarResults, setSimilarResults] = useState([]);
   const [youtubeTrailerKey,setYoutubeTrailerKey] = useState(null)
 
-  // console.log(movieTitle)
+  const similarResults = useSelector((state) => state.similarResults);
+  const moviePosterPath = useSelector((state) => state.setMoviePosterPath);
+  const movieTitle = useSelector((state)=>state.setMovieTitle);
+  const movieYear = useSelector((state)=>state.setMovieYear);
+const dispatch = useDispatch();
 
-  const parts = movieTitle.split('-'); // Split the title at the hyphen
-const baseTitle = parts.slice(0, -1).join('-');
-console.log(baseTitle)
+  // const parts = movieTitle.split('-'); // Split the title at the hyphen
+// const baseTitle = parts.slice(0, -1).join('-');
+// console.log(baseTitle)
 
 
 useEffect(() => {
@@ -106,9 +113,9 @@ useEffect(() => {
     
           const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=credits,videos,alternative_titles,similar`)
       
-    console.log(response.data);
-    console.log(response.data.credits.crew);
-    console.log(response.data.videos);
+    // console.log(response.data);
+    // console.log(response.data.credits.crew);
+    // console.log(response.data.videos);
    
 
     const filter_Director = response.data.credits.crew.filter(member => member.job === "Director")[0].name;
@@ -144,11 +151,14 @@ useEffect(() => {
       setAlternateTitles(extractedTitles);
     
       const firstFourResults = response.data.similar.results;
-      setSimilarResults(firstFourResults);
+      dispatch(setSimilarResults(firstFourResults));
+      dispatch(setMoviePosterPath(response.data.poster_path))
+      dispatch(setMovieTitle(response.data.title))
+      dispatch(setMovieYear(response.data.release_date.slice(0,4)))
+  
       // setSimilarResults(response.data.similar.results.slice(0, 4));
 
-      console.log(firstFourResults);
-    
+   
       
 
       // .slice(0, 4);
@@ -177,7 +187,8 @@ if (movieData === null) {
   </div>); // You can show a loading message or spinner here
 }
 
-
+// console.log(firstFourResults);
+console.log(movieTitle,moviePosterPath)
 
 const { backdrop_path, title, overview, poster_path, release_date,
   imdb_id,runtime,tagline,homepage,production_companies,genres,budget,
@@ -195,9 +206,9 @@ movieCrew.forEach((person) => {
 
 
 
-console.log(similarResults.slice(0, 4));
-console.log(youtubeTrailerKey);
-console.log(window.innerWidth);
+// console.log(similarResults.slice(0, 4));
+// console.log(youtubeTrailerKey);
+// console.log(window.innerWidth);
 // console.log(tagline)
 
 // const screeenWidth = useScreenWidth();
@@ -439,7 +450,7 @@ const backdrop_inlineStyle = {
 
 
     
-<section id="movies" className='row text-center container-fluid mx-auto d-flex justify-content-center align-items-center '>
+<section id="movies" className='row text-center container-fluid my-4 mx-auto d-flex justify-content-center align-items-center '>
 
 <div className='d-flex  justify-content-between '>
     <Link to={`/film/${id}/${slugify(title)}/similar`} className='no-link-decoration light-charcoal text-uppercase '>Similar</Link>

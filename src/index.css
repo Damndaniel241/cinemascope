@@ -186,6 +186,28 @@ height: 100%;
   height:100vh;
 } 
 
+.img-5em-8em{
+  width:5em !important;
+  height:8em !important;
+}
+
+.img-10em-13em{
+  width:14.375rem !important;
+  height: 21.563rem !important;
+}
+
+.icon-green{
+  color: #03AB2E !important;
+}
+
+.icon-blue{
+  color: #40BCF4 !important;
+}
+
+.icon-pink{
+  color: #FF80E8 !important;
+}
+
 .gradient-image-overlay {
   position: relative;
   width: 100%;
