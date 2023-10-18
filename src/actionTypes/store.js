@@ -7,7 +7,8 @@ import similarResultsReducer from '../actionTypes/reducers/SimilarResultsReducer
 import moviePosterPathReducer from '../actionTypes/reducers/PosterPathReducer'
 import movieTitleReducer from '../actionTypes/reducers/movieTitleReducer';
 import movieYearReducer from '../actionTypes/reducers/movieYearReducer';
-
+import movieIdReducer from './reducers/movieIdReducer';
+// import UserSlice from './reducers/UserSlice';
 
 const persistConfig = {
   key: 'root',
@@ -19,8 +20,12 @@ const persistConfig = {
 const rootReducer = combineReducers({ 
   similarResults: similarResultsReducer,
   movieTitle: movieTitleReducer,
+  
   moviePosterPath:moviePosterPathReducer,
-  movieYear:movieYearReducer
+  movieYear:movieYearReducer,
+  movieId: movieIdReducer,
+  // user: UserSlice,
+  // auth: authReducer,
 })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

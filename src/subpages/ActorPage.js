@@ -60,7 +60,7 @@ useEffect(() => {
             <hr/>
         </section>
 
-        <section className="row gx-2">
+        <section className="row gx-2 gy-2">
         {castDetails.map((movieReq)=><Moviebox key={movieReq.id} {...movieReq} />)}
         </section>
         

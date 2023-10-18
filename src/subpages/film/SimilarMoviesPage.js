@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useSelector } from 'react-redux';
 import Header from '../../pages/Header';
 import Footer from '../../pages/Footer';
@@ -7,13 +7,20 @@ import Moviebox from '../../components/Moviebox'
 import {BsDistributeVertical} from 'react-icons/bs'
 import CinemaCard from '../../components/CinemaCard';
 
+
+
+
+
+
 function SimilarMoviesPage(props) {
 
   const similarResults = useSelector((state) => state.similarResults);
   const moviePosterPath = useSelector((state) => state.moviePosterPath);
   const movieTitle = useSelector((state)=>state.movieTitle);
   const movieYear = useSelector((state)=>state.movieYear);
-  
+  const movieId = useSelector((state)=>state.movieId);
+
+ 
   console.log(movieYear)
 
   const API_IMAGE = "https://image.tmdb.org/t/p/w500/"; 
@@ -22,6 +29,7 @@ function SimilarMoviesPage(props) {
     <>
     <Header/>
     {/* <Moviebox/> */}
+    
 
     <div className='mx-md-4 mx-2'>
       <section className="light-charcoal my-5 gap-3 d-flex">
@@ -53,12 +61,13 @@ function SimilarMoviesPage(props) {
      </section>
 
      <section className="d-flex justify-content-center align-items-center my-5">
-      <CinemaCard src={`${API_IMAGE}${moviePosterPath}`} watched="1.8M" appeared="239k" liked="821k"/>
+      <CinemaCard src={`${API_IMAGE}${moviePosterPath}`} movie_id={movieId} movie_title={movieTitle} watched="1.8M" appeared="239k" liked="821k"/>
       {/* <img src={`${API_IMAGE}${moviePosterPath}`} alt="movie image" className="img-fluid img-10em-13em rounded-2 " /> */}
 
       {/* </CinemaCard> */}
      </section>
     </div>
+  
     <Footer/>
     </>
   )

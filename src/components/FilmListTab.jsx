@@ -5,7 +5,7 @@ export const FilmListTabs = ({children}) => {
 
     const initialTab = children[0].props.label;
     const [activeTab, setActiveTab] = useState(initialTab); 
-
+    
     const handleActiveTab = useCallback((label)=> setActiveTab(label),[])  ;
   
     const tabs = children.map((child => {

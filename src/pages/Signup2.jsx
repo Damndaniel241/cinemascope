@@ -1,10 +1,12 @@
-import React,{useState} from 'react'
-import { Link,useNavigate } from 'react-router-dom'
+import React,{useState,useEffect} from 'react'
 import Header from './Header'
 import Footer from './Footer'
-import axios from 'axios'
+import axios from 'axios';
+import { useNavigate,Link, Navigate } from 'react-router-dom';
 
-function Signup() {
+function Signup2() {
+
+    const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -25,6 +27,7 @@ const handleSubmit = async (e) => {
       // Handle successful registration (e.g., show a success message, redirect to login)
       alert(`Welcome ${formData.username}`)
       console.log('Registration successful:', response.data);
+      navigate("/login")
   } catch (error) {
       console.error('Registration failed:', error);
       // Handle registration failure (e.g., display error message)
@@ -34,11 +37,11 @@ const handleSubmit = async (e) => {
 
   return (
     <>
-    {/* <Header/> */}
-    {/* <div className='mx-5 bg-payne-gray rounded-4 my-5 p-4'> */}
-    
-      {/* <h1 className="text-dark h4 text-uppercase text-white">Join cinemascope</h1> */}
-      <form  className='text-start ms-0' onSubmit={handleSubmit}>
+    <Header/>
+    <div className='d-flex justify-content-center align-items-center my-5 mx-md-4 mx-2 '>
+        <div className="bg-payne-gray p-4 rounded-2 container-md">
+            <h4 className="text-uppercase text-light">join cinemascope</h4>
+    <form  className='text-start ms-0' onSubmit={handleSubmit}>
         <div className="mb-3">
           <label for="email-id" className="form-label text-light text-start ">Email</label>
           <input type="email"
@@ -70,13 +73,13 @@ const handleSubmit = async (e) => {
              
           </label>
         </div>
-      <button type="submit" data-bs-dismiss="modal" className=" bg-fire-engine-red rounded-2 mt-3 text-uppercase text-light">sign up</button>
+      <button type="submit" className=" bg-fire-engine-red rounded-2 mt-3 text-uppercase text-light">sign up</button>
       </form>
-    {/* </div> */}
-
-    {/* <Footer/> */}
+      </div>
+    </div>
+    <Footer/>
     </>
   )
 }
 
-export default Signup
+export default Signup2

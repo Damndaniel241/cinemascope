@@ -6,7 +6,16 @@ import { createAction } from '@reduxjs/toolkit';
 export const setSimilarResults = createAction('SET_SIMILAR_RESULTS');
 export const setMoviePosterPath = createAction('SET_MOVIE_POSTER_PATH');
 export const setMovieTitle = createAction('SET_MOVIE_TITLE');
-export const setMovieYear = createAction('SET_MOVIE_YEAR')
+export const setMovieYear = createAction('SET_MOVIE_YEAR');
+export const setMovieId = createAction('SET_MOVIE_ID');
+
+// actions/authActions.js
+export const logout = () => {
+    return {
+      type: 'LOGOUT',
+    };
+  };
+  
 
 
 

@@ -14,11 +14,15 @@ import 'aos/dist/aos.css';
 import 'aos/dist/aos.js';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import 'quill/dist/quill.snow.css'; 
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import brandlogo from '../src/cinemascopelogo.png';
 import reservelogo from '../src/cinemascopelogo2.png';
 import noImage from '../src/no-image-icon.png';
 import $ from 'jquery';
+// import { AuthProvider } from '../src/utils/context/AuthContext';
 
 export {reservelogo,noImage}
 export {brandlogo};
@@ -30,7 +34,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
+    {/* <AuthProvider> */}
     <App />
+    {/* </AuthProvider> */}
     </PersistGate>
     </Provider>
   </React.StrictMode>

@@ -18,6 +18,12 @@ import {SiWindows11} from 'react-icons/si'
 import {BsJournalCheck} from 'react-icons/bs'
 import SimpleSlider from '../components/SimpleSlider';
 import MovieSlider from '../components/MovieSlider';
+// import { useAuth } from '../utils/context/AuthContext';
+import { useSelector } from 'react-redux';
+import { withAuthentication } from '../utils/WithAuthentication';
+import { isAuthenticated } from '../utils/auth';
+import { StarRater } from '../components/StarRater';
+import ReviewCard from '../components/ReviewCard';
 
 
 
@@ -26,20 +32,20 @@ const API_URL_TRENDING = `https://api.themoviedb.org/3/trending/movie/day?api_ke
 const API_IMAGE = "https://image.tmdb.org/t/p/w500/" ;
 function Home() {
    
-   
+  // const username = useSelector((state) => state.user.username);
 
+  // const username = localStorage.getItem("username");
+  const  isLoggedIn  = isAuthenticated();
 
-  const [showModal, setShowModal] = useState(false);
+  const [username, setUsername] = useState(localStorage.getItem("username"));
 
-  // Function to open the modal
-  const openModal = () => {
-    setShowModal(true);
+  // Define a function to update the username state
+  const updateUsername = (newUsername) => {
+    setUsername(newUsername);
   };
+  
 
-  // Function to close the modal
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  
 
 const [movies,setMovies]  = useState([]);
 
@@ -130,15 +136,22 @@ useEffect(() => {
     <div className='home'>
     
         <section id="header" style={inlineStyles} className='gradient-image-overlay d-flex flex-column lg-bg-img height-50vh position-relative '>
-        <Header/>
+        <Header  />
            {/* <Link><h6 className='vertical-text position-absolute'>ryan hagel</h6></Link> */}
-        {/* <img src={whitelogo} style={{ width: "100%"}} alt="background white"/> */}
     
+           {/* {username &&  (<div className="d-flex justify-content-center align-items-center text-center"> <h1 className='text-light'> welcome {username}</h1> </div>  )} */}
         
+        {/* <StarRater/> */}
+      
         </section>
+
+        {/* <ReviewCard/> */}
      
 
         <div className=' gap-4 w-50-md container d-flex justify-content-center  align-items-center flex-column my-auto text-center'>
+    
+     
+    
     <h1 className=" justify-content-center  align-items-center fs-1 h1-mod text-light  animate__animated animate__bounce animate__delay-2s animate__repeat-2">Track films you’ve watched.Save those you want to see. Tell your friends what’s good.  </h1>
 
 

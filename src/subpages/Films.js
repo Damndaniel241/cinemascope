@@ -2,8 +2,8 @@ import React from 'react'
 
 function Films() {
   return (
-    <div className=''>
-        
+    <div className='text-light'>
+        films
     </div>
   )
 }
