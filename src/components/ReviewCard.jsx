@@ -128,7 +128,7 @@ function ReviewCard() {
       });
     };
 
- const handleRate = () => {
+ const handleRate = (ratingValue) => {
   axios.post('http://127.0.0.1:8000/rate-movie/',{movie_id:id,stars:parentRating},{
     headers:{
       'Authorization': `Token ${localStorage.getItem('token')}`,
@@ -186,10 +186,10 @@ function ReviewCard() {
     <hr className='space-cadet'/>
     <div className="d-flex light-charcoal flex-column">
       <h6 className='text-center'>Rate</h6>
-      <span onClick={handleRate}>
-      <StarRater handleCallback={handleRatingCallback} />
+      <span >
+      <StarRater handleCallback={handleRatingCallback} handleStarClick={handleRate} />
       </span>
-      <button onClick={handleDeleteRate} >delete rating</button>
+      {/* <button onClick={handleDeleteRate} >delete rating</button> */}
       {parentRating}
     </div>
     <hr className='space-cadet'/>

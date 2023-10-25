@@ -17,11 +17,12 @@ import "slick-carousel/slick/slick-theme.css";
 import 'quill/dist/quill.snow.css'; 
 
 import 'react-toastify/dist/ReactToastify.css';
+import { ReviewProvider } from './utils/context/ReviewContext';
 
 import brandlogo from '../src/cinemascopelogo.png';
 import reservelogo from '../src/cinemascopelogo2.png';
 import noImage from '../src/no-image-icon.png';
-import $ from 'jquery';
+
 // import { AuthProvider } from '../src/utils/context/AuthContext';
 
 export {reservelogo,noImage}
@@ -34,9 +35,10 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-    {/* <AuthProvider> */}
+      <ReviewProvider>
     <App />
-    {/* </AuthProvider> */}
+    </ReviewProvider>
+  
     </PersistGate>
     </Provider>
   </React.StrictMode>

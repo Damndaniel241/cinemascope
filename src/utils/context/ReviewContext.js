@@ -1,17 +1,19 @@
+
+
 import React, { createContext, useContext, useState } from 'react';
 
-export const ValueContext = createContext();
+const ReviewContext = createContext();
 
-export const useValue = () => {
-  return useContext(ValueContext);
-};
-
-export const ValueProvider = ({ children }) => {
-  const [value, setValue] = useState('');
+export const ReviewProvider = ({ children }) => {
+  const [reviewData, setReviewData] = useState(null);
 
   return (
-    <ValueContext.Provider value={{ value, setValue }}>
+    <ReviewContext.Provider value={{ reviewData, setReviewData }}>
       {children}
-    </ValueContext.Provider>
+    </ReviewContext.Provider>
   );
+};
+
+export const useReviewData = () => {
+  return useContext(ReviewContext);
 };

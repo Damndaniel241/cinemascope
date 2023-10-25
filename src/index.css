@@ -283,6 +283,30 @@ background-color:#d4062a !important;
   background-color: inherit;
 }
 
+.about-blue{
+  color:#3A86FF !important;
+}
+
+
+.bg-about-green{
+  background-attachment:#00971B !important;
+}
+
+.about-green{
+  color:#00971B !important;
+}
+
+
+.about-orange{
+  color:#f77f00 !important;
+}
+
+
+textarea{
+  background-color:#535b6f !important;
+  color: #b6c1df;
+}
+
 .bg-about-blue:hover{
  background-color: #3a86ff !important;
  color:#fff !important;

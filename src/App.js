@@ -13,14 +13,14 @@ import { SimilarResultsProvider } from '../src/subpages/film/SimilarResultsConte
 import SimilarMoviesPage from './subpages/film/SimilarMoviesPage';
 import ActorPage from './subpages/ActorPage';
 import UserProfilepage from './subpages/UserProfilepage';
-import { ValueProvider } from './utils/context/ReviewContext';
+// import { ValueProvider } from './utils/context/ReviewContext';
 
 
 
 function App() {
   return (
     // <>
-      <ValueProvider>
+      // <ValueProvider>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home/>}/>
@@ -38,7 +38,7 @@ function App() {
     </Routes>
     
     </BrowserRouter>
-    </ValueProvider>
+    // </ValueProvider>
   
   
   

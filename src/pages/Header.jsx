@@ -169,7 +169,7 @@ function Header() {
                         <Link className="nav-link text-white dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{username}</Link>
                         <div className="dropdown-menu bg-payne-gray" aria-labelledby="dropdownId">
                             <Link to={`/${username}`} className="dropdown-item" href="#">Home</Link>
-                            <Link className="dropdown-item" href="#">Action 2</Link>
+                            <Link to={`/${username}/film/id/moveTitle`}className="dropdown-item" href="#">check review</Link>
                             <Link className="dropdown-item" href="#">Settings</Link>
                         </div>
                     </li>

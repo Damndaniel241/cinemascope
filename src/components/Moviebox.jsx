@@ -43,6 +43,23 @@ const newTitle = year ? `${slug}-${year}` : slug;
           }}>
           <img className="card-img-top" src={poster_path ?API_IMAGE+poster_path:noImage} alt={title}/>
           </Link>
+
+        </div>
+       
+    </div>
+  )
+}
+
+export default Moviebox
+
+
+
+
+
+
+
+
+
        {/* <Link   key={id}
           to={{
             pathname: `/film/${slugify(title)}`,
@@ -57,10 +74,3 @@ const newTitle = year ? `${slug}-${year}` : slug;
             <h4 className="card-title">{title}</h4>
             <p className="card-text">{overview}</p>
           </div> */}
-        </div>
-       
-    </div>
-  )
-}
-
-export default Moviebox

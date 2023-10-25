@@ -24,6 +24,12 @@ import { withAuthentication } from '../utils/WithAuthentication';
 import { isAuthenticated } from '../utils/auth';
 import { StarRater } from '../components/StarRater';
 import ReviewCard from '../components/ReviewCard';
+import ReviewList from '../components/ReviewList';
+import Avatar from 'react-avatar';
+import { noImage } from '../index';
+import slugify from 'react-slugify';
+import { useReviewData } from '../utils/context/ReviewContext';
+import Expandable from '../components/Expandable';
 
 
 
@@ -45,7 +51,7 @@ function Home() {
   };
   
 
-  
+  const { setReviewData } = useReviewData();
 
 const [movies,setMovies]  = useState([]);
 
@@ -85,6 +91,36 @@ useEffect(() => {
 
 
   fetchMovieDetails();
+}, []);
+
+
+
+
+const [reviews,setReviews] = useState([])
+useEffect(()=>{
+  const fetchReviewDetails = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/retrieve-review/')
+      // console.log(response.data.reviews);
+      const reviewData = response.data.reviews;
+      const updatedReviews = await Promise.all(
+        reviewData.map(async (review) => {
+          const movieResponse = await axios.get(`https://api.themoviedb.org/3/movie/${review.movie}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=credits,videos,alternative_titles,similar`);
+        
+        const movieData = movieResponse.data;
+        return { ...review, movieData };
+      
+      }
+        ));
+      // setReviews(response.data.reviews);
+      setReviews(updatedReviews);
+        
+    }catch (error){
+      console.log('Error fetching review details:',error);
+    }
+  };
+
+fetchReviewDetails();
 }, []);
 
 
@@ -255,9 +291,37 @@ Get started - it's free
     
         </section>
    
-  
-        
-        {/* <Rate rating={rating} onRating={(rate) => setRating(rate)}/> */}
+  <section className="mx-md-4 mx-2">
+        <div className='d-flex  justify-content-between '>
+    <Link to="/" className='no-link-decoration light-charcoal text-uppercase '>popular reviews</Link>
+    <Link to="/" className='no-link-decoration light-charcoal text-uppercase '>All</Link>
+    </div>
+    <hr className=' light-charcoal'/>
+ 
+ <div className='my-4'>
+{reviews.map((review)=>(<>
+ <div className='d-flex gap-4 my-4' key={review.id}>
+
+<div className=''>
+        <img src={review.movieData.poster_path?`${API_IMAGE}`+`${review.movieData.poster_path}`:noImage} alt="movie image" className="img-fluid img-5em-8em rounded-2 " />
+        </div>
+
+<div className='d-flex justify-content-evenly flex-column '>
+<span className='d-flex gap-2'><h5 className="light-charcoal"><Link to={`${review.user_username}/film/${review.movie}/${slugify(review.movieData.title)}`} className='no-link-decoration text-light font-vesper'  onClick={() => setReviewData(review)}>{review.movieData.title}</Link></h5><h5 className='payne-gray'>{review.movieData.release_date.slice(0,4)}</h5></span>
+<Link to={`/${review.user_username}`} className='no-link-decoration light-charcoal '><Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" round={true} size={25} style={{marginRight:"4px"}}/>{review.user_username}</Link>
+<h6 className='light-charcoal'><Expandable maxChar={10}>{review.content}</Expandable></h6>
+
+</div>
+
+    </div>
+    
+     <hr className='light-charcoal'/> </>)  ) }
+                      
+
+ </div>
+    </section>
+
+      
        
          
   
@@ -270,3 +334,14 @@ Get started - it's free
 
 export default Home;
 export {whitelogo};
+
+
+
+
+
+
+
+
+
+
+  {/* {reviews.map((reviewreq)=><ReviewList key={reviewreq.id} {...reviewreq} />)} */}
