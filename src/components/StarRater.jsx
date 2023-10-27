@@ -5,7 +5,8 @@ export const StarRater = (props) => {
     const [rating,setRating] = useState(null);
     const [hover,setHover] = useState(null);
   
-    const handleStarClick = (ratingValue) =>{
+    const handleCallback = (ratingValue) =>{
+      console.log("r-value", ratingValue)
       setRating(ratingValue);
       props.handleStarClick(ratingValue);
     }
@@ -16,7 +17,7 @@ export const StarRater = (props) => {
         {[...Array(5)].map((star,i) =>{
             const ratingValue = i+1;
             return  (<label>
-                <input type="radio" name="rating" value={ratingValue} onClick={() => handleStarClick(ratingValue)}
+                <input type="radio" name="rating" value={ratingValue} onClick={() => handleCallback(ratingValue)}
                />
                 <FaStar className="star" color={ratingValue <= (hover || rating) ? '#40BCF4': '#9197a5'} size={30} 
                 onMouseEnter={() => setHover(ratingValue)}
@@ -25,7 +26,7 @@ export const StarRater = (props) => {
                
         })}
      
-     {props.handleCallback(rating)}
+     {rating}
 
     </div>
   )

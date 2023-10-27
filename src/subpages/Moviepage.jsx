@@ -1017,7 +1017,7 @@ theme="colored"
     </div>
 
 
-    
+
 
     <div className="col-4 d-flex flex-column  justify-content-center align-items-center ">
 <ReviewCard setSuccessMessage={setSuccessMessage} />

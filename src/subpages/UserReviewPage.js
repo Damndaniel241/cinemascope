@@ -48,6 +48,16 @@ function UserReviewPage(props) {
           
         .then((response) => {
           console.log(response.data);
+          toast.success('comment posted!', {
+            position: "top-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
         })
       }
       catch  (error) {

@@ -305,6 +305,7 @@ background-color:#d4062a !important;
 textarea{
   background-color:#535b6f !important;
   color: #b6c1df;
+  outline: none;
 }
 
 .bg-about-blue:hover{

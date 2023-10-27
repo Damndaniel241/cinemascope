@@ -196,34 +196,11 @@ fetchReviewDetails();
 {/* <Register classNames="bg-fire-engine-red  align-self-center  text-light  btn">Get started - it's free </Register> */}
 
 
-<button className='bg-fire-engine-red  align-self-center  text-light  btn'data-bs-toggle="modal" data-bs-target="#sign-up-home" type="button">
+<Link to="/signup" className=' btn bg-fire-engine-red  align-self-center  text-light  btn' type="button">
 Get started - it's free 
-</button>
+</Link>
 
-<div class="modal fade" id="sign-up-home" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered  modal-lg  modal-md modal-xl" role="document">
-    <div class="modal-content mx-lg-5 mx-2  bg-payne-gray  my-5 p-4">
-      <div class="modal-header px-md-2 px-0">
-        <h5 class="modal-title text-uppercase" id="modalTitleIdRegister">join cinemascope</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body px-md-2 px-0">
-    
-        <Signup/>
-    
-      </div>
-     
-    </div>
-  </div>
-</div> 
-
-
-{/* <!-- Optional: Place to the bottom of scripts --> */}
-<script>
-  const myModal = new bootstrap.Modal(document.getElementById('sign-up-home'), options)
-
-</script>
-
+        
 
 
 
@@ -256,7 +233,7 @@ Get started - it's free
      </Link></div>
      <div className='col-12 col-lg-4  '>
      <Link className="d-flex bg-payne-gray bg-about-red rounded-2  no-link-decoration gap-3 p-3 light-charcoal ">
-     <span className='h1'><IoMdStar/></span><span className='text-capitalize'>rate each film on a five-star scale (with halves) to record and share your reaction</span>
+     <span className='h1'><IoMdStar/></span><span className='text-capitalize'>rate each film on a five-star scale to record and share your reaction </span>
      </Link></div>
      <div className='col-12 col-lg-4  '>
      <Link className="d-flex bg-payne-gray bg-about-orange rounded-2  no-link-decoration gap-3 p-3 light-charcoal  ">
