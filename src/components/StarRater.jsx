@@ -26,7 +26,7 @@ export const StarRater = (props) => {
                
         })}
      
-     {rating}
+     {/* {rating} */}
 
     </div>
   )

@@ -126,6 +126,21 @@ function UserReviewPage(props) {
   }
 
 
+  const [comments,setComments] = useState([]);
+  const reviewId  = reviewData.id
+
+  useEffect(() => {
+    axios.get(`http://127.0.0.1:8000/comments/review/${reviewId}/`)
+        .then(response => {
+            setComments(response.data);
+            console.log(response.data)
+        })
+        .catch(error => {
+            console.error('Error fetching comments:', error);
+        });
+}, [reviewId]);
+
+
 
 // const [movieTrailer,setMovieTrailer] = useState(null);
 // const [youtubeTrailerKey,setYoutubeTrailerKey] = useState(null);
@@ -265,9 +280,36 @@ const backdrop_inlineStyle = {
 
             
         </section>
+
+
+        <section className="mx-md-4 mx-2">
+        <div className='d-flex  justify-content-between '>
+    <Link to="/" className='no-link-decoration light-charcoal text-uppercase '>{comments.length} comments</Link>
+
+    </div>
+    <hr className=' light-charcoal'/>
+
+
+    {comments.map((comment)=>(<>
+    
+    <div className='d-flex justify-content-between' key={comment.id}>
+<div className='d-flex gap-2'>
+  <Link style={{fontSize:"0.5678rem"}} className='no-link-decoration light-charcoal' to={`/${comment.user_username}`}> <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" round={true} size={25} style={{marginRight:"4px"}}/> {comment.user_username} </Link>
+</div>
+
+<h6 className='light-charcoal'>{comment.content}</h6> 
+
+
+    </div>
+    </>))}
+    </section>
+
+
         <div className='bg-payne-gray light-charcoal text-capitalize my-5  ps-3 py-3 mb-2 mx-md-4 mx-2 rounded-1  '>
     <Link to={`/${username}`} className='no-link-decoration about-blue'>{username}</Link> is using cinemascope to share film reviews and lists with friends.<Link to="/signup" className='no-link-decoration about-blue text-capitalize '>join here</Link>
 </div>
+
+
         
         </>): 
         // design for loggedin
@@ -317,9 +359,34 @@ theme="colored"
       {reviewData.content}
     </h5>
     <div></div>
+
+
+
+    <section className="mx-md-4 mx-2">
+        <div className='d-flex  justify-content-between '>
+    <Link to="/" style={{fontSize:"0.5678rem"}} className='no-link-decoration light-charcoal text-uppercase '>{comments.length} comments</Link>
+
+    </div>
+    <hr className=' light-charcoal'/>
+
+    {comments.map((comment)=>(<>
+    
+    <div className='d-flex' key={comment.id}>
+<div className='d-flex gap-2'>
+  <Link className='no-link-decoration light-charcoal' to={`/${comment.user_username}`}> <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" round={true} size={25} style={{marginRight:"4px"}}/> {comment.user_username} </Link>
+</div>
+
+
+<h6 className='light-charcoal'>{comment.content}</h6> 
+
+
+    </div>
+    </>))}
+    </section>
+
     <div>
     <form onSubmit={handleCommentSubmit}>
-    <div className='d-flex gap-2 flex-column '>
+    <div className='d-flex gap-2 flex-column my-5 '>
                 <textarea
                  rows={10}
                  cols={50}
@@ -388,9 +455,37 @@ theme="colored"
       {reviewData.content}
     </h5>
 
+    <section className="mx-md-4 mx-2">
+        <div className='d-flex  justify-content-between '>
+    <Link to="/" className='no-link-decoration light-charcoal text-uppercase '>{comments.length} comments</Link>
+
+    </div>
+    <hr className=' light-charcoal'/>
+
+
+    {comments.map((comment)=>(<>
+    
+    <div className='d-flex justify-content-between' key={comment.id}>
+<div className='d-flex gap-2'>
+  <Link className='no-link-decoration light-charcoal' style={{fontSize:"0.5678rem"}} to={`/${comment.user_username}`}> <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" round={true} size={25} style={{marginRight:"4px"}}/> {comment.user_username} </Link>
+</div>
+
+
+<h6 className='light-charcoal'>{comment.content}</h6> 
+
+
+    </div>
+    </>))}
+    </section>
+
+
+
+
+
+
     <div>
     <form onSubmit={handleCommentSubmit}>
-      <div className='d-flex gap-2 flex-column '>
+      <div className='d-flex gap-2 flex-column my-5 '>
                 <textarea
                 className=''
                 rows={10}
