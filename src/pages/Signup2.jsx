@@ -23,7 +23,7 @@ const handleChange = (e) => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-      const response = await axios.post('http://127.0.0.1:8000/signup/', formData);
+      const response = await axios.post('https://damndaniel241.pythonanywhere.com/signup/', formData);
       // Handle successful registration (e.g., show a success message, redirect to login)
       alert(`Welcome ${formData.username}`)
       console.log('Registration successful:', response.data);

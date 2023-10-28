@@ -80,7 +80,7 @@ function Header() {
  
   
   // Set the API endpoint URL
-  const logoutUrl = 'http://127.0.0.1:8000/logout/'; // Replace with your actual endpoint URL
+  const logoutUrl = 'https://damndaniel241.pythonanywhere.com/logout/'; // Replace with your actual endpoint URL
 
  
   console.log(userToken)

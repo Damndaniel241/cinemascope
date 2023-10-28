@@ -74,7 +74,7 @@ const handleReviewSubmit = async (e) => {
 
   try {
     
-    const response = await axios.post('http://127.0.0.1:8000/create-review/', {
+    const response = await axios.post('https://damndaniel241.pythonanywhere.com/create-review/', {
       content: content, // Use the 'value' state to send the review content
       movie_id: id,
     }, {

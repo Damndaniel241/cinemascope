@@ -100,7 +100,7 @@ const [reviews,setReviews] = useState([])
 useEffect(()=>{
   const fetchReviewDetails = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/retrieve-review/')
+      const response = await axios.get('https://damndaniel241.pythonanywhere.com/retrieve-review/')
       // console.log(response.data.reviews);
       const reviewData = response.data.reviews;
       const updatedReviews = await Promise.all(

@@ -40,7 +40,7 @@ function UserReviewPage(props) {
 
      try{ 
       
-      const response = await axios.post('http://127.0.0.1:8000/create-comment/', { content: text, review: reviewData.id,
+      const response = await axios.post('https://damndaniel241.pythonanywhere.com/create-comment/', { content: text, review: reviewData.id,
         }, {
           headers: {
             'Authorization': `Token ${localStorage.getItem('token')}`, // Include the user's token
@@ -93,7 +93,7 @@ function UserReviewPage(props) {
   
     try {
       
-      const response = await axios.post('http://127.0.0.1:8000/create-review/', {
+      const response = await axios.post('https://damndaniel241.pythonanywhere.com/create-review/', {
         content: content, // Use the 'value' state to send the review content
         movie_id: id,
       }, {
@@ -130,7 +130,7 @@ function UserReviewPage(props) {
   const reviewId  = reviewData.id
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/comments/review/${reviewId}/`)
+    axios.get(`https://damndaniel241.pythonanywhere.com/comments/review/${reviewId}/`)
         .then(response => {
             setComments(response.data);
             console.log(response.data)

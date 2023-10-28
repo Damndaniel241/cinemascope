@@ -22,7 +22,7 @@ useEffect(() => {
   const fetchUserDetails = async () => {
     try {
     
-          const response = await axios.get(`http://127.0.0.1:8000/user-profile/${username}/`)
+          const response = await axios.get(`https://damndaniel241.pythonanywhere.com/user-profile/${username}/`)
           setUserData(response.data)
           console.log(response.data)
 

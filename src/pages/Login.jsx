@@ -38,7 +38,7 @@ const handleLoginSuccess = (token) => {
 const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('http://127.0.0.1:8000/login/', formData);
+        const response = await axios.post('https://damndaniel241.pythonanywhere.com/login/', formData);
         const { token } = response.data;
         // Store the token in localStorage or a state management library like Redux
         console.log('Token:', token);

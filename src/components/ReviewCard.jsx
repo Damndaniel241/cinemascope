@@ -39,7 +39,7 @@ function ReviewCard() {
     // console.log(localStorage.getItem('token'));
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/create-review/",
+        "https://damndaniel241.pythonanywhere.com/create-review/",
         {
           content: content, // Use the 'value' state to send the review content
           movie_id: id,
@@ -83,7 +83,7 @@ function ReviewCard() {
     // Send a POST request to like the movie
     axios
       .post(
-        "http://127.0.0.1:8000/like/",
+        "https://damndaniel241.pythonanywhere.com/like/",
         { movie_id: id },
         {
           headers: {
@@ -106,7 +106,7 @@ function ReviewCard() {
     // Send a POST request to unlike the movie
     axios
       .post(
-        "http://127.0.0.1:8000/unlike/",
+        "https://damndaniel241.pythonanywhere.com/unlike/",
         { movie_id: id },
         {
           headers: {
@@ -126,7 +126,7 @@ function ReviewCard() {
   const handleRate = (ratingValue) => {
     axios
       .post(
-        "http://127.0.0.1:8000/rate-movie/",
+        "https://damndaniel241.pythonanywhere.com/rate-movie/",
         { movie_id: id, stars: ratingValue },
         {
           headers: {
@@ -149,7 +149,7 @@ function ReviewCard() {
 
     axios
       .post(
-        "http://127.0.0.1:8000/delete-rating/",
+        "https://damndaniel241.pythonanywhere.com/delete-rating/",
         {
           movie_id: id,
         },
