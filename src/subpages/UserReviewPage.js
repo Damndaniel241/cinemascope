@@ -371,13 +371,13 @@ theme="colored"
 
     {comments.map((comment)=>(<>
     
-    <div className='d-flex' key={comment.id}>
+    <div className='d-flex justify-content-between ' key={comment.id}>
 <div className='d-flex gap-2'>
   <Link className='no-link-decoration light-charcoal' to={`/${comment.user_username}`}> <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" round={true} size={25} style={{marginRight:"4px"}}/> {comment.user_username} </Link>
 </div>
 
 
-<h6 className='light-charcoal'>{comment.content}</h6> 
+<h6  style={{fontSize:"0.5678rem"}} className='light-charcoal align-self-center '>{comment.content}</h6> 
 
 
     </div>
