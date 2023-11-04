@@ -93,9 +93,9 @@ useEffect(() => {
       <button type="button" className='bg-payne-gray text-capitalize text-light'>follow </button>
       </div>
     </div>
-
+{/* 
     <div className="d-flex justify-content-center gap-4 flex-wrap mb-3">
-    <div className="d-flex flex-column "><h3 className="text-light font-cormorant text-center">726</h3>
+    <div className="d-flex flex-column "><h3  className="text-light font-cormorant text-center">726</h3>
     <Link to="" className='text-uppercase no-link-decoration light-charcoal'>films</Link>
     </div>
     <div className="straight-line"></div>
@@ -110,7 +110,7 @@ useEffect(() => {
     <div className="d-flex flex-column"><h3 className="text-light font-cormorant center text-center">726</h3>
     <Link to="" className='text-uppercase no-link-decoration light-charcoal'>followers</Link>
     </div>
-  </div>
+  </div> */}
 
     </section>
 

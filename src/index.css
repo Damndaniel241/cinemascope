@@ -301,6 +301,16 @@ background-color:#d4062a !important;
   color:#f77f00 !important;
 }
 
+.coming-soon{
+  background: #121FCF;
+/* background: linear-gradient(to right, #121FCF 0%, #CF1512 100%); */
+
+background: linear-gradient(to left, #FF0000 0%, #ffff00 50%, #FF0000 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+}
+
 
 textarea{
   background-color:#535b6f !important;

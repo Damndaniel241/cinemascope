@@ -280,7 +280,7 @@ Get started - it's free
  <div className='d-flex gap-4 my-4' key={review.id}>
 
 <div className=''>
-        <img src={review.movieData.poster_path?`${API_IMAGE}`+`${review.movieData.poster_path}`:noImage} alt="movie image" className="img-fluid img-5em-8em rounded-2 " />
+<Link to={`${review.user_username}/film/${review.movie}/${slugify(review.movieData.title)}`} ><img src={review.movieData.poster_path?`${API_IMAGE}`+`${review.movieData.poster_path}`:noImage} alt="movie image" className="img-fluid img-5em-8em rounded-2 " /></Link>
         </div>
 
 <div className='d-flex justify-content-evenly flex-column '>

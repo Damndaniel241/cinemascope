@@ -14,6 +14,7 @@ import SimilarMoviesPage from './subpages/film/SimilarMoviesPage';
 import ActorPage from './subpages/ActorPage';
 import UserProfilepage from './subpages/UserProfilepage';
 // import { ValueProvider } from './utils/context/ReviewContext';
+import ComingSoon from './components/ComingSoon';
 
 
 
@@ -28,12 +29,13 @@ function App() {
       <Route path="/signup" element={<Signup2/>}/>
      
     
-      <Route path="/films" element={<Films/>}/>
+      {/* <Route path="/films" element={<Films/>}/> */}
       <Route path="/film/:id/:movieTitle" element={<Moviepage/>}/>
       <Route path="/actor/:name" element={<ActorPage/>}/>
       <Route path="/search/:query" element={<SearchResults/>} />
       <Route path="/*" element={<Subpages />}/>
-      {/* <Route path="/films" element={<UserProfilepage />}/> */}
+      <Route path="/films" element={<ComingSoon />}/>
+      <Route path="/members" element={<ComingSoon/>}/>
 
     </Routes>
     
